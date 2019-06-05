@@ -1,0 +1,20 @@
+Energy Rating Data Dictionary for Computer Monitors (labelled) as at May 2015
+
+Column - Description
+Record ID - This is the unique registration ID record for the product and is taken from the GEMS product database
+Status - This is the registration status of the product and must be either "Superseded" or "Approved"
+Brand Name - This is the manufacturers brand
+Model Number - This is the model number of the appliance, usually a unique field
+Selling Countries - These are the countries where the product is registered for sale and may include Australia, New Zealand and/or Fiji
+Manufacturing Countries - Country of manufacture
+Screen Size - The diagonal measurement of the screen in cm
+Screen Technology - Either LED (Light Emitting Diode) or LCD (Liquid Crystal Display)
+Comparative Energy Consumption - This is the current Comparative Energy Consumption of the product which is it's nominal energy consumption expressed as kilowatt hours per years.
+Active Standby Power - This is the amount of energy used by the monitor in active standby power mode
+Star Rating Index - The current Star Rating Index for the appliance. 
+Star Rating - The current Star Rating for the appliance as found on the Energy Rating Label
+Product Website - This is the specific web address for the product itself
+Representative Brand URL - This is the web address for the manufacturer
+Availability Status - This is the availability status of the product and must be either "Available" or "Unavailable". This status is based on self-reporting of the registrant.
+Star Image Large - This is the energy rating icon for the product and is based on the top half of the Energy Rating Label
+Star Image Small - This is a smaller version of the energy rating icon for the product and is based on the top half of the Energy Rating Label

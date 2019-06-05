@@ -1,0 +1,35 @@
+Energy Rating Data Dictionary for Dishwashers (labelled) as at May 2015
+
+Column - Column Identifier - Description
+ApplStandard - Registration.regulatory_standard - This is the legal standard to which the appliance must comply
+Brand - Model.brand_name - This is the manufacturers brand
+Cap - rated_capacity - The whole number of place settings as stated by the manufacturer
+CEC_ - cec - This is the Comparative Energy Consumption of the product which is it's nominal energy consumption expressed as kilowatt hours per years.
+Conn_Type - conn_type - Water connection type (hot/cold/dual)
+Country - Registration.registrationmanufacturingcountry_set - Country of manufacture
+delayStartMode - delaystartmode - Does the product include a delayed start function
+Depth - appliance_dimensions_depth - Overall appliance depth in mm
+Height - appliance_dimensions_height - Overall appliance height in mm
+Load_Type - prog_tested - Not Applicable
+Model No - Model.model_number - Model number
+N-Standard - Registration.test_standard - Appliance Test Standard
+New SRI - star_rating_index - The Star Rating Index for the appliance. 
+New Star - star_rating - The Star Rating for the appliance as found on the Energy Rating Label
+postProgenergy - postprogenergy - Post Program Energy, this is the energy that the appliance uses after a program cycle is complete.
+powerConsMode - powerconsmode - Not Applicable
+Prog Name - prog_name - This is the name of the setting eg. "Normal", "Heavy", "Eco", etc. 
+Prog Time - prog_time - This is the nominated program time duration expressed in minutes
+Sold_in - Registration.selling_countries - Countries where the product is sold. 
+standbyPowerUsage - standbypowerusage - The power used by the appliance in standby mode
+Submit_ID - Registration.pk - This is the unique registeration ID record for the product and is taken from the GEMS product database
+SubmitStatus - Registration.get_status_display - This is the registration status of the product and must be either "Superceeded" or "Approved"
+Tot Wat Cons - tot_wat_cons - This is the total water consumption of the appliance in the nominated program cycle
+Type - appliance_type - This is a list of dishwasher types eg. free standing, built-in and on bench.
+Water_Softener - water_softene - This indicates if water softener is required for the appliance.
+Width - appliance_dimensions_width - Overall product dimensions in mm
+ExpDate - Registration.expiry_date - This is the date that the product's registration will expire
+GrandDate - Registration.superseded_date - This product can be sold after this date but can no longer be manufactured or imported from this date
+Product Class - Registration.product_class - Not Applicable
+Availability Status - Registration.availability_status - This is the availability status of the product and must be either "Available" or "Unavailable". This status is based on self-reporting of the registrant.
+Product Website - Registration.get_manufacturer_company_website - This is the specific web address for the product itself
+Representative Brand URL - Registration.representative_model_number.brand.url - This is the web address for the manufacturer

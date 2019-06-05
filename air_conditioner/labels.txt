@@ -1,0 +1,75 @@
+Energy Rating Data Dictionary for Air Conditioners (labelled) as at June 2015
+
+Column - Column Identifier - Description
+ApplStandard - Registration.regulatory_standard - This is the legal standard to which the appliance must comply
+MEPSComp - mepscomp - This is a year that MEPS was applied to the appliance.  If blank the data is unavailable.
+N-Standard - Registration.test_standard - This is the test standard used for the appliance, usually denoted with the prefix AS/NZS xxxxxxx
+Model Name - Registration.get_model_name_display_display - Model number is more generally used
+Model_No - Model.model_number - This is the model number of the appliance, usually a unique field
+avg_pwr_standby_mode - avg_pwr_standby_mode - Not Applicable. Before the energy efficiency ratio incorporated inoperative power in 2009/2010, this was a voluntary declaration of standby power.
+Brand - Model.brand_name - This is the manufacturer's brand
+C-Dehumid_Rated - c__dehumid_rated - Rated dehumidifying power (kW) working at full load (flat out) at 35 degrees C. Combined with "C-Sens_Cool_Rated" = "C-Total Cool Rated".
+Configuration1 - indoor_air_distribution - This is the indoor air distribution and should be either "single", "ducted" or "both"
+Configuration2 - configuration2 - This is the configuration of the air-conditioner unit and describes if it is a split system or a window/wall system etc.  Also refer to "Configuration2-unitmount".
+Configuration2-unitmount - configuration2__unitmount - This is the configuration of the air-conditioner unit and describes if it is a split system or a window/wall system etc. Also refer to "Configuration2".
+Configuration3_Sink	- configuration3_sink - What is the exhaust heat transferred to e.g. Air, water, cooling tower.
+Configuration3_Source - configuration3_source - Where the heat or cool source comes from e.g. Air or water.
+Country - Registration.registrationmanufacturingcountry_set - Country or countries of manufacture. Note that split systems can be produced in multiple countries.
+C-Power_Inp_Rated - cooling_power_rated_effective - This is the electrical power used by the unit (kW) at 35 degrees C working at full load (flat out).
+C-Sens_Cool_Rated - total_cooling_capacity_sensible_capacity - This is the cooling power (kW) that lowers a dry bulb thermometer temperature at 35 degrees C working at full load (flat out). Combined with "C-Dehumid_Rated" = "C-Total Cool Rated".
+C-Total Cool Rated - c_total_cool_rated - This is the total cooling output of the unit in kW at 35 degrees C working at full load (flat out) and appears as "Capacity Output kW" on the Energy Rating Label.  This total is a combination of C-Sens_Cool_Rated and C-Dehumid_Rated
+Depth - appliance_dimensions_size - Insert overall dimension in mm
+H2_COP - h2_cop - This is a voluntary declaration of heater efficiency (kW/kW) at 2 degrees C working at full load (flat out).
+H2_HeatPwrCapacity - h2_heatpwrcapacity - This is a voluntary declaration of heater capacity (kW) at 2 degrees C working at full load (flat out).
+H2_HeatPwrInput - h2_heatpwrinput - This is a voluntary declaration of electrical power (kW) used at 2 degrees C working at full load (flat out).
+Height - appliance_dimensions_height - Insert overall dimension in mm
+H-Power_Inp_Rated - h__power_inp_rated - This is the electrical power used for heating by the unit (kW) at 7 degrees C working at full load (flat out).
+H-Total Heat Rated - h__total_heat_rated - This is the total heating output of the unit in kW at 7 degrees C working at full load (flat out) and appears as "Capacity Output kW" on the Energy Rating Label.  
+indoorType - indoortype - This is the type of test facility that the air conditioner was tested in and is either "calorimeter",  "enthalpy" or "computer simulation"
+EERtestAvg - eertestavg - This is the tested energy efficiency ratio for cooling working at full load (flat out) (the higher the better)
+COPtestAvg - coptestavg - This is the tested energy efficiency ratio for heating working at full load (flat out) (the higher the better)
+Invert - does_this_air_conditioner_have_variable - This model may use a variable speed drive or multispeed compressor.
+Setting_cool - setting - Only applicable for testing houses
+Setting_heat - setting_heat - Only applicable for testing houses
+Pnoc - pnoc - Non-operative power for cooling mode (lower the better). This is now mandatory and replaces “avg_pwr_standby_mode”.
+Pnoh - pnoh - Non-operative power for heating mode (lower the better) . This is now mandatory and replaces “avg_pwr_standby_mode”.
+VSCP_EER50 - vscp_eer50 - This is a voluntary measure for variable speed units only and is the cooling efficiency (kW/kW) at 50% capacity (part load) at 35 degrees C.
+VSCP_COP50 - vscp_cop50 - This is a voluntary measure for variable speed units only and is the heating efficiency (kW/kW) at 50% capacity (part load) at 7 degrees C.
+eermepslev - eermepslev - This data field has been superseded but may contain historical energy efficiency information
+TestedOutputEER - testedoutputeer - Not Applicable
+TestedOutputCOP - testedoutputcop - Not Applicable
+AnnualOutputEER - eerannual - This is cooling energy efficiency (kW/kW) incorporating inoperative power consumption. This metric is what the MEPS level  is based upon and has been in use since 2010.
+AnnualOutputCOP - copannual - This is heating energy efficiency (kW/kW) incorporating inoperative power consumption. This metric is what the MEPS level is based upon and has been in use since 2010.
+PL_EERMEPS - pl_eermeps - Not Applicable
+PL_COPMEPS - pl_eermeps - Not Applicable
+sri2010_cool - sri2010_cool - This is the raw calculated Star Rating Index (SRI) value for cooling
+sri2010_heat - sri2010_heat - This is the raw calculated Star Rating Index (SRI) value for heating
+Star2010_Cool - star2010_cool - This is the value that determines the Energy Rating Label for cooling post 2010
+Star2010_Heat - star2010_heat - This is the value that determines the Energy Rating Label for heating post 2010
+outdoortype - test_room_outdoor_type_used - This is the type of test facility that the air conditioner was tested in and is either "calorimeter",  "enthalpy" or "computer simulation"
+Phase - power_supply - This is the type of power supply (single or three phase) to run the air conditioner. 
+Refrigerant - refrigerant - This is the type of refrigerant gas used by the air-conditioner
+Sold_in - Registration.selling_countries - These are the countries where the product is registered for sale and may include Australia, New Zealand and/or Fiji
+Submit_ID - Registration.pk - This is the unique registration ID record for the product and is taken from the GEMS product database
+ExpDate - Registration.expiry_date - This is the date that the product's registration will expire
+GrandDate - Registration.superseded_date - This product can be sold after this date but can no longer be manufactured or imported from this date
+SubmitStatus - Registration.get_status_display - This is the registration status of the product and must be either "Superseded" or "Approved"
+Type - air_conditioner_type - This indicates the products ability to cool or to cool and heat (Reverse Cycle)
+Width - appliance_dimensions_width - Insert overall dimension in mm
+Product Class - Registration.product_class - Not Applicable
+Demand Response 1 - demandresponse_1 - The model may have a demand response capability built into the product that is ready to use as supplied. Refer to AS/NZS 4755.3.1.
+Demand Response 2 - demandresponse_2 - The Energy Rating Label may indicate that the product is demand response capable
+Demand Response 4 - demandresponse_4 - The model may have a demand response capability only through the addition of a separate part
+Demand Response 5 - demandresponse_5 - The model may comply with Mode 1 (on/off)
+Demand Response 6 - demandresponse_6 - The model may comply with Mode 2 (50% power)
+Demand Response 7 - demandresponse_7 - The model may comply with Mode 3 (75% power)
+PartNumber - prt_numb - If the product is demand response capable through the addition of an extra part (see field Demand Response 4) this is the part number.
+EER - eer_display - This is the cooling energy efficiency ratio (kW output / kW input) for the product. This has been a mandatory field for the past 4 years, however some older records may be blank. If you want to use a more consistent energy efficiency metric for cooling across the life of the E3 Program, use column EERTestAv.
+Availability Status - Registration.availability_status - This is the availability status of the product and must be either "Available" or "Unavailable". This status is based on self-reporting of the registrant
+star2000_cool - star2000_cool - These were the cooling star ratings prior to 2010 and have been superseded
+star2000_heat - star2000_heat - These were the heating star ratings prior to 2010 and have been superseded
+Product Website - Registration.get_manufacturer_company_website - This is the specific web address for the product itself
+Representative Brand URL - Registration.representative_model_number.brand.url - This is the web address for the manufacturer
+Star Image Large - This is the energy rating icon for the product and is based on the top half of the Energy Rating Label
+Star Image Small - This is a smaller version of the energy rating icon for the product and is based on the top half of the Energy Rating Label
+

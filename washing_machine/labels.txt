@@ -1,0 +1,38 @@
+Energy Rating Data Dictionary for Clothes Washers (labelled) as at May 2015
+
+Column - Column Identifier - Description
+ApplStandard - Registration.regulatory_standard - This is the legal standard to which the appliance must comply
+Brand - Model.brand_name - This is the manufacturers brand
+Cap - rated_load_capacity - This is the rated capacity of the appliance in half kilogram increments only.
+CEC Cold - cec_cold - This is the current Comparative Energy Consumption for the product on cold wash expressed as kilowatt hours per years.
+CEC_ - cec_warm_wash - This is the current Comparative Energy Consumption for the product on warm wash expressed as kilowatt hours per years.
+Cold Prog - cold_prog - Name of program used in cold wash tests
+Cold Wat Cons - c_wtrcnsmp - Average cold water consumption in whole litres
+Combination - is_combination_washer_dryer - The appliance may be a combination washer/dryer
+Control - control - The appliance may have a control a timer or is autosensing
+Country - Registration.registrationmanufacturingcountry_set - Country of manufacture
+Depth - dimension_depth - Insert overall dimension in mm
+Height - dimension_height - Insert overall dimension in mm
+Model Name - Registration.get_model_name_display_display - Model name
+Model No - Model.model_number - Model number
+N-Standard - Registration.test_standard - This is the test standard used for the appliance, usually denoted with the prefix AS/NZS xxxxxxx
+New CEC - cec - This is the current Comparative Energy Consumption of the product which is its nominal energy consumption expressed as kilowatt hours per years.
+New SRI - star_rating_index - The current Star Rating Index for the appliance. 
+New Star - star_rating - The current Star Rating for the appliance as found on the Energy Rating Label
+Prog Name - program_temp_name - This is the name of the setting e.g. "Normal", "Heavy", "Eco", etc. 
+Prog Time - rated_program_time - This is the nominated program time duration expressed in minutes
+Sold_in - Registration.selling_countries - Countries where the product is sold. 
+SubmitStatus - Registration.get_status_display - This is the registration status of the product and must be either "Superseded" or "Approved"
+Submit_ID - Registration.pk - This is the unique registration ID record for the product and is taken from the GEMS product database
+Test_Moist_Remove - test_moist_remove - Not Applicable
+Tot_Wat_Cons - total_water_consumption - This is the total water consumption of the appliance in the nominated program cycle
+Type - dryer_type - This is a list of clothes washer types either drum or non-drum.
+Width - dimension_width - Insert overall dimension in mm
+ExpDate - Registration.expiry_date - This is the date that the product's registration will expire
+GrandDate - Registration.superseded_date - This product can be sold after this date but can no longer be manufactured or imported from this date
+Product Class - Registration.product_class - Not Applicable
+Availability Status - Registration.availability_status - This is the availability status of the product and must be either "Available" or "Unavailable". This status is based on self-reporting of the registrant.
+Product Website - Registration.get_manufacturer_company_website - This is the specific web address for the product itself
+Representative Brand URL - Registration.representative_model_number.brand.url	This is the web address for the manufacturer
+Star Image Large - This is the energy rating icon for the product and is based on the top half of the Energy Rating Label
+Star Image Small - This is a smaller version of the energy rating icon for the product and is based on the top half of the Energy Rating Label

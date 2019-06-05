@@ -1,0 +1,28 @@
+Energy Rating Data Dictionary for Televisions (labelled) as at May 2015
+
+Column - Column Identifier - Description
+Submit_ID - Registration.pk - This is the unique registration ID record for the product and is taken from the GEMS product database
+Brand_Reg - Model.brand_name - This is the manufacturers brand
+Model_No - Model.model_number - This is the model number of the appliance, usually a unique field
+SoldIn - Registration.selling_countries - These are the countries where the product is registered for sale and may include Australia, New Zealand and/or Fiji
+Country - Registration.registrationmanufacturingcountry_set - Country of manufacture
+screensize - screen_size - The diagonal measurement of the screen in cm
+Screen_Area - screen_area - This is the screen area (Height x Width) in cm2
+Screen_Tech - screen_tech - This is the type of screen technology (LCD, Plasma, OLED, etc…)
+Pasv_stnd_power - pasv_stnd_power - This is the amount of energy used by the appliance in passive standby power mode
+Act_stnd_power - act_stnd_time - This is the time allocated that the television will be in active standby mode.
+Act_stnd_time - act_stnd_power - This is the amount of energy used by the appliance in active standby power mode
+Avg_mode_power - avg_mode_power - This is the amount of energy used by the appliance when the television is in use.
+Star - star - This is the star rating from the previous Minimum Energy Performance Standard level. This figure has been superceeded by the field Star2.
+SRI - sri - The current Star Rating Index for the appliance. 
+CEC - cec - This is the current Comparative Energy Consumption of the product which is it's nominal energy consumption expressed as kilowatt hours per years.
+SubmitStatus - Registration.get_status_display - This is the registration status of the product and must be either "Superseded" or "Approved"
+ExpDate - Registration.expiry_date - This is the date that the product's registration will expire
+GrandDate - Registration.superseded_date - This product can be sold after this date but can no longer be manufactured or imported from this date
+Product Class - Registration.product_class - Not Applicable
+Availability Status - Registration.availability_status - This is the availability status of the product and must be either "Available" or "Unavailable". This status is based on self-reporting of the registrant.
+Star2 - star2 - This is the actual star rating of the television.
+Product Website - Registration.get_manufacturer_company_website - This is the specific web address for the product itself
+Representative Brand URL - Registration.representative_model_number.brand.url - This is the web address for the manufacturer
+Star Image Large - This is the energy rating icon for the product and is based on the top half of the Energy Rating Label
+Star Image Small - This is a smaller version of the energy rating icon for the product and is based on the top half of the Energy Rating Label

@@ -1,0 +1,44 @@
+Energy Rating Data Dictionary for Refrigerators and Freezers (labelled) as at May 2015
+
+Column - Column Identifier - Description
+Adaptive Defrost - adaptfrost - The appliance may have an adaptive defrost function
+ApplStandard - Registration.regulatory_standard - This is the legal standard to which the appliance must comply
+Brand - Model.brand_name - This is the manufacturers brand
+CEC_ - cec - This is the Comparative Energy Consumption of the product which is its nominal energy consumption expressed as kilowatt hours per years.
+CompartGrVol - compartgrvol - This is the compartment gross volume expressed in litres (excludes shelving etc.)
+CompartNetVol - compartnetvol - This is the compartment net volume expressed in litres (may include shelving)
+CompartType - comparttype - This is the compartment type, either fresh food or freezer.
+Configuration - configuration - This is the configuration type e.g. Upright, side-by-side, chest.
+Country - Registration.registrationmanufacturingcountry_set - Country of manufacture
+Depth - depth - Overall appliance depth in mm
+Designation - designation - This is the type of appliance e.g. Cooled appliance, Freezer, Refrigerator, Refrigerator/Freezer
+FF Vol - ff_vol - This is the fresh food volume of the product expressed in litres
+FZ Vol - fz_vol - This is the freezer volume of the product expressed in litres
+Group - s__group - This is the appliance types are grouped under the standard eg. 1,2,3,4,5B,5T,5S,6U,6C,7.
+Height - height - Overall appliance height in mm
+Icemaker - icemaker - The appliance may have an ice-maker
+MEPSApproval - s__mepsapproval - The appliance should meet MEPS and Labelling requirements
+Model Name - Registration.get_model_name_display_display - This field is infrequently used; “model number” is more specific
+Model No - Model.model_number - This is the model number of the appliance, usually a unique field
+N-Standard - Registration.test_standard - This is the test standard used for the appliance, usually denoted with the prefix AS/NZS xxxxxxx
+Star2009 - star_rating - This is the value that determines the Energy Rating Label for the product prior to 2010
+SRI2009 - star_rating_index - This is the value that determines the Star Rating Index for the product prior to 2010
+No_Doors - compartdoors - Number of doors on the appliance
+S-MEPS_Ad - s__meps_ad - This is the additional door allowance for MEPS (in kWh/year).
+S-MEPScutoff - s__mepscutoff - The MEPS level for the appliance taking into account Group, size, icemaker allowance and additional door allowance (as applicable).
+Sold_in - Registration.selling_countries - These are the countries where the product is registered for sale and may include Australia, New Zealand and/or Fiji
+Submit_ID - Registration.pk - This is the unique registration ID record for the product and is taken from the GEMS product database
+SubmitStatus - Registration.get_status_display - This is the registration status of the product and must be either "Superseded" or "Approved"
+Tot Vol - total_volume_gross - This is the total volume of the product in litres
+Width - width - This is the width of the product in mm
+ExpDate - Registration.expiry_date - This is the date that the product's registration will expire
+GrandDate - Registration.superseded_date - This product can be sold after this date but can no longer be manufactured or imported from this date
+Product Class - Registration.product_class - The appliance class, as identified in the table in section 5 (2) of the Household Refrigerated Appliances Determination 2012.
+Availability Status - Registration.availability_status - This is the availability status of the product and must be either "Available" or "Unavailable". This status is based on self-reporting of the registrant
+Product Website - Registration.get_manufacturer_company_website - This is the specific web address for the product itself
+Representative Brand URL - Registration.representative_model_number.brand.url - This is the web address for the manufacturer
+Fixed MEPS allowance factor - s__meps_kf - This is a fixed allowance factor used to calculate the MEPS compliance of the product
+Variable MEPS allowance factor - s__meps_kv - This is a variable allowance factor used to calculate the MEPS compliance of the product
+Adjusted volume - s__meps_vadjtot - This is an adjusted volume accounting for the fresh food and freezer volume of the appliance.
+Star Image Large - This is the energy rating icon for the product and is based on the top half of the Energy Rating Label
+Star Image Small - This is a smaller version of the energy rating icon for the product and is based on the top half of the Energy Rating Label
