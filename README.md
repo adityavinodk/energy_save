@@ -9,6 +9,7 @@ and use it to suggest ways of dealing with high energy consumption.
 Run the following in the root folder of the repository
 ```shell
 cd frontend
+npm install
 npm run build
 cd ../server/app.py
 ```
