@@ -1,2 +1,8 @@
 .DS_Store
 **/.ipynb_checkpoints/
+.vscode
+
+# server
+server/__pycache__
+server/templates
+server/static
