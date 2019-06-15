@@ -10,7 +10,7 @@ class Header extends Component {
       <header>
       <Nav className="mr-auto" navbar>
       <NavItem>
-        <NavLink to="/" activeclassname="active">Page 1</NavLink>
+        <NavLink to="/" activeclassname="active">EnergySave</NavLink>
       </NavItem>
     </Nav>
       </header>
