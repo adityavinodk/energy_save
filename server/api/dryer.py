@@ -1,16 +1,9 @@
 import os
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
-import scipy as sc
-import seaborn as sns
-import math
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC, LinearSVC
+from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_score, recall_score, f1_score
-
 
 class predictDryer():
 
@@ -21,14 +14,14 @@ class predictDryer():
     def predict(self):
         # Kindly refer ../../inferences/dryer.ipynb for the logic of the following code
 
-        # order_of_training_data = ['Appliance Standard', 'Brand', 'Capacity', 'Combination', 'Control', 'Country', 'Depth','Height', 'Current Comparitive Energy Consumption', 'Program Name', 'Program Time', 'Type', 'Width', 'Year of Expiry']
+        # order_of_training_data = ['Appliance Standard', 'Brand', 'Capacity', 'Combination', 'Control', 'Country', 'Depth','Height', 'Current Comparitive Energy Consumption', 'Program Name', 'Program Time', 'Type', 'Width']
         specifications = self.specifications
         dataset_path = self.dataset_path
         
         data = pd.read_csv(dataset_path)
         
         columns = ['Model No', 'Family Name', 'Sold_in', 'N-Standard', 'SubmitStatus', 'Submit_ID', 'GrandDate', 'Product Class', 'New SRI', 'Tot_Wat_Cons', 'Test_Moist_Remove',
-                   'Product Website', 'Old Star Rating', 'Star Image Large', 'Star Image Small', 'Availability Status', 'Representative Brand URL']
+                   'Product Website', 'Old Star Rating', 'Star Image Large', 'Star Image Small', 'Availability Status', 'Representative Brand URL', 'ExpDate']
         data.drop(columns, axis=1, inplace=True)
 
         # Converting New Star to different classes
@@ -124,24 +117,6 @@ class predictDryer():
             data.at[index, 'Width'] = value
         data['Width'] = data['Width'].astype(int)
 
-        # Filling up missing ExpDate values
-        mode_year = int(data.ExpDate.value_counts().index[0].split('/')[2])
-        data.ExpDate = data.ExpDate.fillna('0')
-        for index, row in data.iterrows():
-            if data.at[index, 'ExpDate']:
-                if len(data.at[index, 'ExpDate'].split('/')) == 3:
-                    date = int(data.at[index, 'ExpDate'].split('/')[2])
-                else:
-                    date = mode_year
-
-            if date > 10 and date < 19: value = 0
-            elif date >= 19 and date < 21: value = 1
-            elif date >= 21 and date <= 22: value = 2
-            else: value = 3
-            data.at[index, 'ExpDate'] = value
-
-        data['ExpDate'] = data['ExpDate'].astype(int)
-
         # Setting Capacity under different integer classes
         for index, rows in data.iterrows():
             capacity = int(data.at[index, 'Cap'])
@@ -234,12 +209,12 @@ class predictDryer():
 
         # KNN Neighbours Classification
         # TODO: Fine tuning of hyper parameters
-        knn = KNeighborsClassifier(n_neighbors=3)
+        knn = KNeighborsClassifier(n_neighbors = 3, leaf_size=5, algorithm='ball_tree')
         knn.fit(train_x, train_y)
-        test_y = knn_predictions = knn.predict(test_x)
+        test_y = knn.predict(test_x)
         return test_y[0]
 
 if __name__ == "__main__":
-    specifications = ['AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)', 'ASKO', 8, True, 'Timer', 'Slovenia', 890, 650, 200, 'Heat and dry', 230, 'Vented', 650, '10/26/2020']
+    specifications = ['AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)', 'ASKO', 8, True, 'Timer', 'Slovenia', 890, 650, 200, 'Heat and dry', 230, 'Vented', 650]
     a = predictDryer(specifications, os.path.abspath('../datasets/dryer.csv'))
     print(a.predict())
