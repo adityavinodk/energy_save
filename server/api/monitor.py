@@ -87,5 +87,7 @@ class predictMonitor():
 
 if __name__ == "__main__":
     specifications = [60.5, 'LCD (LED)', 0.35]
-    a = predictMonitor(specifications, os.path.abspath('../datasets/dryer.csv'))
+    ROOT_DIRECTORY_PATH = os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir))
+    DATASET_PATH = os.path.join(ROOT_DIRECTORY_PATH, 'datasets')
+    a = predictMonitor(specifications, os.path.join(DATASET_PATH, 'monitor.csv'))
     print(a.predict())

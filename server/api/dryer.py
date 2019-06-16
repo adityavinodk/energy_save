@@ -216,5 +216,7 @@ class predictDryer():
 
 if __name__ == "__main__":
     specifications = ['AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)', 'ASKO', 8, True, 'Timer', 'Slovenia', 890, 650, 200, 'Heat and dry', 230, 'Vented', 650]
-    a = predictDryer(specifications, os.path.abspath('../datasets/dryer.csv'))
+    ROOT_DIRECTORY_PATH = os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir))
+    DATASET_PATH = os.path.join(ROOT_DIRECTORY_PATH, 'datasets')
+    a = predictDryer(specifications, os.path.join(DATASET_PATH, 'dryer.csv'))
     print(a.predict())

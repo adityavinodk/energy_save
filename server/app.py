@@ -1,13 +1,12 @@
 import os
 from flask import Flask, render_template, request
 import json
+import config as config
 from api.dryer import predictDryer
 from api.monitor import predictMonitor
 
 app = Flask(__name__)
-app.secret_key = 'rishiisapain'
-categories = ['Poor: The appliance seems to be using up a lot of energy',
-                  'OK: The appliance seems to be operating just fine', 'Good: The appliance is in good condition']
+app.config.from_object(config.DevConfig)
 
 # Serve React App
 @app.route('/')
@@ -19,17 +18,17 @@ def predict_dryer():
     req_data = request.get_json()
     specifications = req_data['specifications']
     model = predictDryer(
-        specifications, os.path.abspath('../datasets/dryer.csv'))
+        specifications, os.path.join(app.config['DATASET_PATH'], 'dryer.csv'))
     prediction = model.predict()
-    return json.dumps({'category': int(prediction), 'info': categories[prediction]})
+    return json.dumps({'category': int(prediction), 'info': app.config['PRODUCT_CATEGORIES'][prediction]})
 
 @app.route('/api/predict/monitor', methods=["POST"])
 def predict_monitor():
     req_data = request.get_json()
     specifications = req_data['specifications']
     model = predictMonitor(
-        specifications, os.path.abspath('../datasets/monitor.csv'))
+        specifications, os.path.join(app.config['DATASET_PATH'], 'monitor.csv'))
     prediction = model.predict()
-    return json.dumps({'category': int(prediction), 'info': categories[prediction]})
+    return json.dumps({'category': int(prediction), 'info': app.config['PRODUCT_CATEGORIES'][prediction]})
 
 app.run(debug=True)
