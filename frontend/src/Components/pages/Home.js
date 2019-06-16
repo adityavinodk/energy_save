@@ -16,16 +16,15 @@ class Home extends Component {
     submitForm(e) {
         e.preventDefault();
         fetch('http://127.0.0.1:5000/api/predict/dryer', {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, cors, *same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
+            method: 'POST', 
+            mode: 'cors', 
+            cache: 'no-cache', 
+            credentials: 'same-origin', 
             headers: {
                 'Content-Type': 'application/json',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            redirect: 'follow', // manual, *follow, error
-            referrer: 'no-referrer', // no-referrer, *client
+            redirect: 'follow', 
+            referrer: 'no-referrer', 
             body: JSON.stringify({
                 "specifications": ["AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)",
                     "ASKO", 8, true, "Timer", "Slovenia", 890, 650, 200, "Heat and dry", 230, "Vented", 650, "10/26/2020"]
