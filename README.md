@@ -11,7 +11,8 @@ Run the following in the root folder of the repository
 cd frontend
 npm install
 npm run build
-cd ../server/app.py
+cd ../server
+python app.py
 ```
 
 ## Team Members

@@ -15,7 +15,7 @@ class Home extends Component {
     }
     submitForm(e) {
         e.preventDefault();
-        fetch('http://127.0.0.1:5000/api/predict/dryer', {
+        fetch('/api/predict/dryer', {
             method: 'POST', 
             mode: 'cors', 
             cache: 'no-cache', 
@@ -27,7 +27,7 @@ class Home extends Component {
             referrer: 'no-referrer', 
             body: JSON.stringify({
                 "specifications": ["AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)",
-                    "ASKO", 8, true, "Timer", "Slovenia", 890, 650, 200, "Heat and dry", 230, "Vented", 650, "10/26/2020"]
+                    "ASKO", 8, true, "Timer", "Slovenia", 890, 650, 200, "Heat and dry", 230, "Vented", 650]
             }),
         })
             .then(response => response.json())
@@ -41,13 +41,16 @@ class Home extends Component {
             <div className='landing'>
                 <form className='dark-overlay text-dark'>
                     <label className='form-group'>Appliance Standard
-                    <input
+                        <br />
+                        <input
                             type='text'
                             placeholder='Appliance Standard'
                             value={this.state.applianceStandard}
                             onChange={this.handleChange}
+                        />
+                    </label>
+                    <br />
 
-                        /></label>
                     <br />
                     <button
                         type='submit'
@@ -55,7 +58,7 @@ class Home extends Component {
                         onClick={this.submitForm}
                     >
                         Submit
-          </button>
+                    </button>
                 </form>
                 <label className="display-4">{this.state.response.info}</label>
             </div>

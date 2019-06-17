@@ -3,6 +3,6 @@
 .vscode
 
 # server
-**/.__pycache__/
+__pycache__/
 server/templates
 server/static
