@@ -13,7 +13,7 @@ class App extends React.Component {
         <div>
           <Header />
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="/">Navbar</a>
+            <a className="navbar-brand" href="/">ENERGYSAVE</a>
             <ul className="navbar-nav mr-auto">
               <li><Link to={'/'} className="nav-item nav-link"> Home </Link></li>
             </ul>
