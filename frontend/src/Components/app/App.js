@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import '../styles/app.css';
 import Header from '../layout/Header';
 import Footer from '../layout/Footer';
-import Home from '../pages/home';
-import Demo1 from '../pages/Demo1';
-import Demo2 from '../pages/Demo2';
+import Home from '../pages/Home';
+import Dryer from '../pages/Dryer';
 
 class App extends React.Component {
   render() {
@@ -14,11 +13,9 @@ class App extends React.Component {
         <div>
           <Header />
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">Navbar</a>
+            <a className="navbar-brand" href="/">Navbar</a>
             <ul className="navbar-nav mr-auto">
               <li><Link to={'/'} className="nav-item nav-link"> Home </Link></li>
-              <li><Link to={'/demo1'} className="nav-item nav-link">Demo1</Link></li>
-              <li><Link to={'/demo2'} className="nav-item nav-link">Demo2</Link></li>
             </ul>
           </nav>
           <main style={{
@@ -31,8 +28,7 @@ class App extends React.Component {
           }}>
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/demo1' component={Demo1} />
-              <Route path='/demo2' component={Demo2} />
+              <Route path='/dryer' component={Dryer} />
             </Switch>
           </main>
           <Footer />

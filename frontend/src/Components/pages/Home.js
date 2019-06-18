@@ -4,66 +4,43 @@ class Home extends Component {
     constructor() {
         super()
         this.state = {
-
-            response: {}
+            'appliance': ''
         }
         this.handleChange = this.handleChange.bind(this);
-        this.submitForm = this.submitForm.bind(this)
+        this.selectAppliance = this.selectAppliance.bind(this);
     }
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ 'appliance': event.target.value });
     }
-    submitForm(e) {
+    selectAppliance(e) {
         e.preventDefault();
-        fetch('/api/predict/dryer', {
-            method: 'POST', 
-            mode: 'cors', 
-            cache: 'no-cache', 
-            credentials: 'same-origin', 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            redirect: 'follow', 
-            referrer: 'no-referrer', 
-            body: JSON.stringify({
-                "specifications": ["AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)",
-                    "ASKO", 8, true, "Timer", "Slovenia", 890, 650, 200, "Heat and dry", 230, "Vented", 650]
-            }),
-        })
-            .then(response => response.json())
-            .then(res => {
-                console.log(res);
-                this.setState({ response: res })
-            })
+        this.props.history.push('/dryer')
+        // if (this.state.appliance === 'dryer') {
+        //     return <Redirect to="/dryer" />
+        // }
+
     }
     render() {
         return (
-            <div className='landing'>
-                <form className='dark-overlay text-dark'>
-                    <label className='form-group'>Appliance Standard
-                        <br />
-                        <input
-                            type='text'
-                            placeholder='Appliance Standard'
-                            value={this.state.applianceStandard}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-                    <br />
+            <div className="container">
+                <div className="jumbotron text-center">
+                    <h1>Lets Get Started</h1>
+                    <p>Select an Appliance</p>
 
-                    <br />
-                    <button
-                        type='submit'
-                        className='form-group btn btn-dark'
-                        onClick={this.submitForm}
-                    >
-                        Submit
-                    </button>
-                </form>
-                <label className="display-4">{this.state.response.info}</label>
+                    <div className="form-group">
+                            <select className="form-control form-control-lg" id="appliance">
+                                <option value="dryer">Dryer</option>
+                            </select>
+                    </div>
+                    <input type="submit" value="Select" className="btn btn-lg btn-success w-25" onClick={this.selectAppliance} />
+
+
+                </div>
             </div>
         )
     }
 }
 
 export default Home
+
+
