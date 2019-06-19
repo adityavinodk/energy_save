@@ -19,13 +19,15 @@ class Home extends Component {
     render() {
         return (
             <div className="container">
+                <div className="container-fluid">
+                <div className="h4 text-justify"><label className="text-success">EnergySave</label> helps to find the areas of high energy consumption in households based on predicting the health of the appliances</div>
+                <div className="lead text-justify mb-3">Our predictions models accurately predict the star rating of the appliances, old or new, with a number of features, 
+                    and present a number of valuable insights on the ways of reducing the wastage
+                </div>
+                </div>
                 <div className="jumbotron text-center">
-                    <h3>EnergySave helps to find the areas of high energy consumption in households based on predicting the health of the appliances</h3><br />
-                    <h4>Our predictions models accurately predict the star rating of the appliances, old or new, with a number of features, 
-                        and present a number of valuable insights on the ways of reducing the wastage
-                    </h4><br />
-                    <h5>Let's Get Started</h5>
-                    <h6>Select an Appliance</h6>
+                    <div className="display-4">Let's Get Started</div>
+                    <div className="h3 text-success">Select an Appliance</div>
                     <div className="form-group">
                             <select className="form-control form-control-lg" value={this.state.appliance} onChange={this.handleChange}>
                                 <option value="dryer">Dryer</option>

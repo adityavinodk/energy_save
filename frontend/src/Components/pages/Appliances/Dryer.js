@@ -129,8 +129,8 @@ class Dryer extends Component {
               value={this.state.combination}
               onChange={this.handleChange}
             >
-              <option value="true">true</option>
-              <option value="false">false</option>
+              <option value="true">True</option>
+              <option value="false">False</option>
             </select>
           </div>
 

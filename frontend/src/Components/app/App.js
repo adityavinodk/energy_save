@@ -13,8 +13,8 @@ class App extends React.Component {
       <Router>
         <div>
           <Header />
-          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="/">EnergySave</a>
+          <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <a className="navbar-brand text-success font-weight-bold mx-auto order-0" href="/">EnergySave</a>
           </nav>
           <main style={{
             paddingTop: "100px",
