@@ -15,13 +15,13 @@ class predictMonitor():
     def predict(self):
         # Kindly refer ../../inferences/monitor.ipynb for the logic of the following code
 
-        # order_of_training_data = ['Screen Size', 'Screen Technology', 'Active Standby Power']
+        # order_of_training_data = ['Screen Technology', 'Comparitive Energy Consumption', 'Active Standby Power']
         specifications = self.specifications
         dataset_path = self.dataset_path
         data = pd.read_csv(dataset_path)
 
         # Drop the unnecessary columns
-        columns = ['Record ID', 'Status', 'Brand Name', 'Manufacturing Countries', 'Availability Status','Model Number', 'Family Name', 'Comparative Energy Consumption', 'Selling Countries', 'Product Website', 'Representative Brand URL', 'Star Rating Index', 'Expiry Date', 'Star Image Large', 'Star Image Small']
+        columns = ['Record ID', 'Status', 'Brand Name', 'Manufacturing Countries', 'Availability Status','Model Number', 'Family Name', 'Screen Size', 'Selling Countries', 'Product Website', 'Representative Brand URL', 'Star Rating Index', 'Expiry Date', 'Star Image Large', 'Star Image Small']
         data.drop(columns, axis=1, inplace=True)
 
         for index, row in data.iterrows():
@@ -40,23 +40,24 @@ class predictMonitor():
         df2 = pd.DataFrame([specifications],columns=data.columns.values)
         data = pd.concat([data,df2], ignore_index = True)
 
-        # Mapping Screen Size to Integer Classes
-        data['Screen Size'] = data['Screen Size'].astype(float)
-        screen_size_range = data['Screen Size'].max() - data['Screen Size'].min()
-        screen_size_mean = data['Screen Size'].mean()
-        for index, rows in data.iterrows():
-            screen_size = (data.at[index, 'Screen Size'] - screen_size_mean)/screen_size_range
-            if screen_size>-0.4 and screen_size<=-0.08: value = 0
-            elif screen_size>-0.08 and screen_size<=-0.07: value = 1
-            elif screen_size>-0.07 and screen_size<=-0.03: value = 2
-            elif screen_size>-0.03 and screen_size<=-0.027: value = 3
-            elif screen_size>-0.027 and screen_size<=-0.01: value = 4
-            elif screen_size>-0.01 and screen_size<=0.044: value = 5
-            elif screen_size>0.044 and screen_size<=0.045: value = 6
-            elif screen_size>0.045 and screen_size<=0.2: value = 7
-            elif screen_size>0.2 : value = 8
-            data.at[index, 'Screen Size'] = value
-        data['Screen Size'] = data['Screen Size'].astype(int)
+        # Mapping Comparitive Energy Consumption to Integer Classes
+        for index, row in data.iterrows():
+            comp_energy = data.at[index, 'Comparative Energy Consumption']
+            if comp_energy<=50: value = 0
+            elif comp_energy>50 and comp_energy<=60: value = 1
+            elif comp_energy>60 and comp_energy<=67: value = 2
+            elif comp_energy>67 and comp_energy<=75: value = 3
+            elif comp_energy>75 and comp_energy<=82: value = 4
+            elif comp_energy>82 and comp_energy<=92: value = 5
+            elif comp_energy>92 and comp_energy<=102: value = 6
+            elif comp_energy>102 and comp_energy<=112: value = 7
+            elif comp_energy>112 and comp_energy<=125: value = 8
+            elif comp_energy>125 and comp_energy<=150: value = 9
+            elif comp_energy>150 and comp_energy<=180: value = 10
+            else: value = 11
+            
+            data.at[index, 'Comparative Energy Consumption'] = value
+        data['Comparative Energy Consumption'] = data['Comparative Energy Consumption'].astype(int)
 
         # Mapping Screen Technology to Integer classes
         data['Screen Technology'] = data['Screen Technology'].map({'LCD (LED)': 0, 'LCD': 1, 'OLED': 2}).astype(int)
@@ -86,7 +87,7 @@ class predictMonitor():
         return test_y[0]
 
 if __name__ == "__main__":
-    specifications = [60.5, 'LCD (LED)', 0.35]
+    specifications = ['LCD (LED)', 100, 0.35]
     ROOT_DIRECTORY_PATH = os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir))
     DATASET_PATH = os.path.join(ROOT_DIRECTORY_PATH, 'datasets')
     a = predictMonitor(specifications, os.path.join(DATASET_PATH, 'monitor.csv'))

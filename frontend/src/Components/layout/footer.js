@@ -9,7 +9,7 @@ const Footer = () => (
     <div className="container-fluid text-light bg-dark">
     <div className="footer-copyright text-center py-3">
       <div>
-          Energy Consumption Saving Application by Aditya Vinod Kumar and Rishi Ravikumar
+          Made by Aditya Vinod Kumar and Rishi Ravikumar
       </div>
     </div>
     </div>

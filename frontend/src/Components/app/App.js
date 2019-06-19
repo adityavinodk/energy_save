@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import '../styles/app.css';
 import Header from '../layout/Header';
 import Footer from '../layout/Footer';
 import Home from '../pages/Home';
-import Dryer from '../pages/Dryer';
+import Dryer from '../pages/Appliances/Dryer';
+import Monitor from '../pages/Appliances/Monitor';
 
 class App extends React.Component {
   render() {
@@ -13,10 +14,7 @@ class App extends React.Component {
         <div>
           <Header />
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="/">ENERGYSAVE</a>
-            <ul className="navbar-nav mr-auto">
-              <li><Link to={'/'} className="nav-item nav-link"> Home </Link></li>
-            </ul>
+            <a className="navbar-brand" href="/">EnergySave</a>
           </nav>
           <main style={{
             paddingTop: "100px",
@@ -29,6 +27,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/dryer' component={Dryer} />
+              <Route path='/monitor' component={Monitor} />
             </Switch>
           </main>
           <Footer />
