@@ -20,10 +20,12 @@ class Dryer extends Component {
       'programTime': '',
       'type': 'Vented',
       'width': '',
+      'response':''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCombination = this.handleCombination.bind(this);
-    this.submitForm = this.submitForm.bind(this);
+    this.submitForm = this.submitForm.bind(this);    
+    this.resetResponse = this.resetResponse.bind(this);
   }
   handleChange(event) {
     event.preventDefault();
@@ -71,11 +73,34 @@ class Dryer extends Component {
       .then(response => response.json())
       .then(res => {
         console.log(res);
-        this.setState({ response: res })
+        this.setState({'response':{
+          'category' : res.category,
+          'info': res.info
+        }})
       })
   }
+  resetResponse(event){
+    event.preventDefault();
+    this.setState({
+      'response': '',
+      'applianceStandard': 'AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)',
+      'brand': '',
+      'capacity': '',
+      'combination': true,
+      'control': 'Timer',
+      'country': '',
+      'depth': '',
+      'height': '',
+      'comparitiveEnergyConsumption': '',
+      'programName': '',
+      'programTime': '',
+      'type': 'Vented',
+      'width': ''
+    });
+  }
   render() {
-    return (
+    var content;
+    const formContent = (
       <div>
         <div className="container-fluid mb-5 display-4">
           Dryer Details
@@ -102,7 +127,7 @@ class Dryer extends Component {
             <input
               type='text'
               className="form-control"
-              placeholder='Enter the name of the Brand'
+              placeholder='Name of the Brand'
               name='brand'
               value={this.state.brand}
               onChange={this.handleChange}
@@ -122,7 +147,7 @@ class Dryer extends Component {
           </div>
 
           <div className="form-group">
-            <label className="form-inline">Combination</label>
+            <label className="form-inline">Combination - washer+dryer?</label>
             <select
               className="form-control"
               name='combination'
@@ -153,7 +178,7 @@ class Dryer extends Component {
             <input
               type='text'
               className="form-control"
-              placeholder='Enter the country of manufacture'
+              placeholder='Country of manufacture'
               name="country"
               value={this.state.country}
               onChange={this.handleChange}
@@ -165,7 +190,7 @@ class Dryer extends Component {
             <input
               type='number'
               className="form-control"
-              placeholder='Enter the depth in mm'
+              placeholder='Depth in mm'
               name="depth"
               value={this.state.depth}
               onChange={this.handleChange}
@@ -177,7 +202,7 @@ class Dryer extends Component {
             <input
               type='number'
               className="form-control"
-              placeholder='Enter the height in mm'
+              placeholder='Height in mm'
               name="height"
               value={this.state.height}
               onChange={this.handleChange}
@@ -189,7 +214,7 @@ class Dryer extends Component {
             <input
               type='number'
               className="form-control"
-              placeholder='Enter the Comparative Energy Consumption of the product expressed as kilowatt hours per years'
+              placeholder='Energy Consumption of the product expressed as kilowatt hours per years'
               name="comparitiveEnergyConsumption"
               value={this.state.comparitiveEnergyConsumption}
               onChange={this.handleChange}
@@ -201,7 +226,7 @@ class Dryer extends Component {
             <input
               type='text'
               className="form-control"
-              placeholder='Enter the program run like heat/dry'
+              placeholder='Program run like heat/dry'
               name="programName"
               value={this.state.programName}
               onChange={this.handleChange}
@@ -213,7 +238,7 @@ class Dryer extends Component {
             <input
               type='number'
               className="form-control"
-              placeholder='Enter the program time in minutes'
+              placeholder='Program time in minutes'
               name="programTime"
               value={this.state.programTime}
               onChange={this.handleChange}
@@ -238,7 +263,7 @@ class Dryer extends Component {
             <input
               type='number'
               className="form-control"
-              placeholder='Enter the width in mm'
+              placeholder='Width in mm'
               name="width"
               value={this.state.width}
               onChange={this.handleChange}
@@ -253,8 +278,22 @@ class Dryer extends Component {
           </button>
         </form>
       </div>
+    )
 
-    );
+    const responseContent = (
+      <div className='container'>
+        <h2>Category {this.state.response ? this.state.response.category: null}</h2><br />
+        <h4>{this.state.response ? this.state.response.info: null}</h4>
+        <button value="Fill Details Again" className="btn btn-lg btn-success w-25" onClick={this.resetResponse}>Fill Details Again</button>
+      </div>
+    )
+    
+    if(this.state.response){
+      content = responseContent
+    }
+    else content = formContent;
+    return  <div>{content}</div>;
+    
   }
 }
 

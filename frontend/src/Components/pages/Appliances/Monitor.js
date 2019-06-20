@@ -9,11 +9,13 @@ class Monitor extends Component {
     this.state = {
       'screenTechnology':'LCD',
       'comparitiveEnergyConsumption':'',
-      'activeStandbyPower': ''
+      'activeStandbyPower': '',
+      'response':''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleTech = this.handleTech.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.resetResponse = this.resetResponse.bind(this);
   }
   handleChange(event) {
     event.preventDefault();
@@ -46,11 +48,23 @@ class Monitor extends Component {
       .then(response => response.json())
       .then(res => {
         console.log(res);
-        this.setState({ response: res })
+        this.setState({'response':{
+          'category' : res.category,
+          'info': res.info
+        }})
       })
   }
+  resetResponse(event){
+    event.preventDefault();
+    this.setState({
+      'response': '',
+      'comparitiveEnergyConsumption':'',
+      'activeStandbyPower': ''
+    });
+  }
   render() {
-    return (
+    var content;
+    const formContent = (
       <div>
         <div className="container-fluid mb-5 display-4">
           Monitor Details
@@ -76,7 +90,7 @@ class Monitor extends Component {
                 <input
                 type='text'
                 className="form-control"
-                placeholder='Enter the Comparative Energy Consumption of the product expressed as kilowatt hours per years'
+                placeholder='Comparative Energy Consumption expressed as kilowatt hours per years'
                 name='comparitiveEnergyConsumption'
                 value={this.state.comparitiveEnergyConsumption}
                 onChange={this.handleChange}
@@ -88,7 +102,7 @@ class Monitor extends Component {
                 <input
                 type='number'
                 className="form-control"
-                placeholder='Enter the amount of energy used by the monitor in Active Standby Mode'
+                placeholder='Amount of energy used by the monitor in Active Standby Mode'
                 name='activeStandbyPower'
                 value={this.state.activeStandbyPower}
                 onChange={this.handleChange}
@@ -103,8 +117,21 @@ class Monitor extends Component {
           </button>
         </form>
       </div>
-
     );
+
+    const responseContent = (
+      <div className='container'>
+        <h4>Category - {this.state.response ? this.state.response.category: null}</h4>
+        <h5>Details - {this.state.response ? this.state.response.info: null}</h5>
+        <button value="Fill Details Again" className="btn btn-lg btn-success w-25" onClick={this.resetResponse}>Fill Details Again</button>
+      </div>
+    )
+
+    if(this.state.response){
+      content = responseContent
+    }
+    else content = formContent;
+    return <div>{content}</div>;
   }
 }
 
