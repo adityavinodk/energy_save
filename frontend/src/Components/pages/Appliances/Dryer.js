@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Response from '../../layout/Response';
 import headers from '../../utils/Headers';
 
 class Dryer extends Component {
@@ -20,12 +21,12 @@ class Dryer extends Component {
       'programTime': '',
       'type': 'Vented',
       'width': '',
-      'response':''
+      'response':'',
+      'loading' : false,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCombination = this.handleCombination.bind(this);
     this.submitForm = this.submitForm.bind(this);    
-    this.resetResponse = this.resetResponse.bind(this);
   }
   handleChange(event) {
     event.preventDefault();
@@ -42,6 +43,7 @@ class Dryer extends Component {
   }
   submitForm(e) {
     e.preventDefault();
+    this.setState({'loading': true});
     const data = [
       this.state.applianceStandard,
       this.state.brand,
@@ -79,25 +81,7 @@ class Dryer extends Component {
         }})
       })
   }
-  resetResponse(event){
-    event.preventDefault();
-    this.setState({
-      'response': '',
-      'applianceStandard': 'AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)',
-      'brand': '',
-      'capacity': '',
-      'combination': true,
-      'control': 'Timer',
-      'country': '',
-      'depth': '',
-      'height': '',
-      'comparitiveEnergyConsumption': '',
-      'programName': '',
-      'programTime': '',
-      'type': 'Vented',
-      'width': ''
-    });
-  }
+
   render() {
     var content;
     const formContent = (
@@ -273,23 +257,16 @@ class Dryer extends Component {
             type='submit'
             className='form-group btn btn-lg btn-success'
             onClick={this.submitForm}
+            disabled={this.state.loading}
           >
-            Find Star Rating
+            {!this.state.loading ? 'Find Star Rating' : 'Submitting...'}
           </button>
         </form>
       </div>
     )
 
-    const responseContent = (
-      <div className='container'>
-        <h2>Category {this.state.response ? this.state.response.category: null}</h2><br />
-        <h4>{this.state.response ? this.state.response.info: null}</h4>
-        <button value="Fill Details Again" className="btn btn-lg btn-success w-25" onClick={this.resetResponse}>Fill Details Again</button>
-      </div>
-    )
-    
     if(this.state.response){
-      content = responseContent
+      content = <Response response={this.state.response} appliance="Dryer" />
     }
     else content = formContent;
     return  <div>{content}</div>;

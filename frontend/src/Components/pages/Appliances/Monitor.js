@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Response from '../../layout/Response';
 import headers from '../../utils/Headers';
 
 class Monitor extends Component {
@@ -10,12 +11,12 @@ class Monitor extends Component {
       'screenTechnology':'LCD',
       'comparitiveEnergyConsumption':'',
       'activeStandbyPower': '',
-      'response':''
+      'response':'',
+      'loading' : false,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleTech = this.handleTech.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.resetResponse = this.resetResponse.bind(this);
   }
   handleChange(event) {
     event.preventDefault();
@@ -27,6 +28,7 @@ class Monitor extends Component {
   }
   submitForm(e) {
     e.preventDefault();
+    this.setState({'loading': true});
     const data = [
         this.state.screenTechnology,
         parseInt(this.state.comparitiveEnergyConsumption),
@@ -54,15 +56,7 @@ class Monitor extends Component {
         }})
       })
   }
-  resetResponse(event){
-    event.preventDefault();
-    this.setState({
-      'screenTechnology':'LCD',
-      'comparitiveEnergyConsumption':'',
-      'activeStandbyPower': '',
-      'response':''
-    });
-  }
+
   render() {
     var content;
     const formContent = (
@@ -113,23 +107,16 @@ class Monitor extends Component {
                 type='submit'
                 className='form-group btn btn-lg btn-success'
                 onClick={this.submitForm}
+                disabled={this.state.loading}
             >
-            Find Star Rating
+            {!this.state.loading ? "Find Star Rating" : "Submitting..."}
           </button>
         </form>
       </div>
     );
 
-    const responseContent = (
-      <div className='container'>
-        <h4>Category - {this.state.response ? this.state.response.category: null}</h4>
-        <h5>Details - {this.state.response ? this.state.response.info: null}</h5>
-        <button value="Fill Details Again" className="btn btn-lg btn-success w-25" onClick={this.resetResponse}>Fill Details Again</button>
-      </div>
-    )
-
     if(this.state.response){
-      content = responseContent
+      content = <Response response={this.state.response} appliance="monitor" />
     }
     else content = formContent;
     return <div>{content}</div>;

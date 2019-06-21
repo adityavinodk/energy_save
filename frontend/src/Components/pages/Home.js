@@ -4,7 +4,7 @@ class Home extends Component {
     constructor() {
         super()
         this.state = {
-            'appliance': 'dryer'
+            'appliance': ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.selectAppliance = this.selectAppliance.bind(this);
@@ -27,9 +27,9 @@ class Home extends Component {
                 </div>
                 <div className="jumbotron text-center">
                     <div className="display-4">Let's Get Started</div>
-                    <div className="h3 text-success">Select an Appliance</div>
                     <div className="form-group">
                             <select className="form-control form-control-lg" value={this.state.appliance} onChange={this.handleChange}>
+                                <option value="" hidden>Select an Appliance</option>
                                 <option value="dryer">Dryer</option>
                                 <option value="monitor">Monitor</option>
                             </select>
