@@ -57,9 +57,10 @@ class Monitor extends Component {
   resetResponse(event){
     event.preventDefault();
     this.setState({
-      'response': '',
+      'screenTechnology':'LCD',
       'comparitiveEnergyConsumption':'',
-      'activeStandbyPower': ''
+      'activeStandbyPower': '',
+      'response':''
     });
   }
   render() {
@@ -102,7 +103,7 @@ class Monitor extends Component {
                 <input
                 type='number'
                 className="form-control"
-                placeholder='Amount of energy used by the monitor in Active Standby Mode'
+                placeholder='Amount of energy used by the monitor in Active Standby Mode in watts'
                 name='activeStandbyPower'
                 value={this.state.activeStandbyPower}
                 onChange={this.handleChange}

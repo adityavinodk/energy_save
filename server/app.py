@@ -4,6 +4,7 @@ import json
 import config as config
 from api.dryer import predictDryer
 from api.monitor import predictMonitor
+from api.washing_machine import predictWashingMachine
 
 app = Flask(__name__)
 app.config.from_object(config.DevConfig)
@@ -28,6 +29,15 @@ def predict_monitor():
     specifications = req_data['specifications']
     model = predictMonitor(
         specifications, os.path.join(app.config['DATASET_PATH'], 'monitor.csv'))
+    prediction = model.predict()
+    return json.dumps({'category': int(prediction), 'info': app.config['PRODUCT_CATEGORIES'][prediction]})
+
+@app.route('/api/predict/washing_machine', methods=["POST"])
+def predict_washing_machine():
+    req_data = request.get_json()
+    specifications = req_data['specifications']
+    model = predictWashingMachine(
+        specifications, os.path.join(app.config['DATASET_PATH'], 'washing_machine.csv'))
     prediction = model.predict()
     return json.dumps({'category': int(prediction), 'info': app.config['PRODUCT_CATEGORIES'][prediction]})
 
