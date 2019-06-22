@@ -10,6 +10,8 @@ class predictDryer():
     def __init__(self, specifications, dataset_path):
         self.specifications = specifications
         self.dataset_path = dataset_path
+        self.problemFeatures = ['New CEC', 'Prog Time', 'Type', 'Cap']
+        self.booleanFeatures = ['Combination']
 
     def predict(self):
         # Kindly refer ../../inferences/dryer.ipynb for the logic of the following code
@@ -204,15 +206,35 @@ class predictDryer():
         # For now we shall not consider the effects of Brand_country, Brand and Country
         train_x = data.drop(['Brand_Country', 'Brand', 'Country'], axis=1)
         test_x = train_x.loc[len(data)-1]
+        inputData = test_x
         test_x = pd.DataFrame([test_x.tolist()], columns = train_x.columns.values)
         train_x = train_x[:-1]
+        realData = train_x.copy()
+        realData['New Star'] = pd.Series(train_y.to_numpy(), index=train_x.index)
 
         # KNN Neighbours Classification
         # TODO: Fine tuning of hyper parameters
         knn = KNeighborsClassifier(n_neighbors = 3, leaf_size=5, algorithm='ball_tree')
         knn.fit(train_x, train_y)
         test_y = knn.predict(test_x)
-        return test_y[0]
+        return self.inferenceBuilder(realData, inputData, test_y[0])
+
+    def inferenceBuilder(self, data, inputData, category):
+        issues = []
+        booleanFeatureNames = ['Condensor Combination']
+        featureNames = ['Comparative Energy Consumption', 'Time of usage of Appliance', 'Type of appliance', 'Capacity of appliance']
+        for i in range(len(self.booleanFeatures)):
+            feature = self.booleanFeatures[i]
+            if category!=2 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
+                issues.append(booleanFeatureNames[i])
+        for i in range(len(self.problemFeatures)):
+            feature = self.problemFeatures[i]
+            if category==0 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:2]:
+                issues.append(featureNames[i])
+            elif category==1 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
+                issues.append(featureNames[i])
+        responseData = {'category':category, 'issues': issues}
+        return responseData
 
 if __name__ == "__main__":
     specifications = ['AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)', 'ASKO', 8, True, 'Timer', 'Slovenia', 890, 650, 200, 'Heat and dry', 230, 'Vented', 650]

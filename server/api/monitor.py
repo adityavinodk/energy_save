@@ -1,6 +1,5 @@
 import os
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -11,6 +10,7 @@ class predictMonitor():
     def __init__(self, specifications, dataset_path):
         self.specifications = specifications
         self.dataset_path = dataset_path
+        self.problemFeatures = ['Screen Technology', 'Comparative Energy Consumption', 'Active Standby Power']
 
     def predict(self):
         # Kindly refer ../../inferences/monitor.ipynb for the logic of the following code
@@ -77,14 +77,30 @@ class predictMonitor():
         # Split the data into train and test
         train_x = data
         test_x = train_x.loc[len(data)-1]
+        inputData = test_x
         test_x = pd.DataFrame([test_x.tolist()], columns = train_x.columns.values)
         train_x = train_x[:-1]
+        realData = train_x.copy()
+        realData['Star Rating'] = pd.Series(train_y.to_numpy(), index=train_x.index)
 
         # Fit the random forest classifier model and return prediction
         random_forest = RandomForestClassifier(n_estimators=200, criterion='entropy', oob_score=True)
         random_forest.fit(train_x, train_y)
         test_y = random_forest.predict(test_x)
-        return test_y[0]
+        return self.inferenceBuilder(realData, inputData, test_y[0])
+    
+    def inferenceBuilder(self, data, inputData, category):
+        issues = []
+        featureNames = ['Technology running the screen', 'Comparative Energy Consumption', 'Power used in Standby Mode']
+        for i in range(len(self.problemFeatures)):
+            feature = self.problemFeatures[i]
+            if category==0 and inputData[feature] in data.loc[data['Star Rating']<=1, feature].value_counts().index[:2]:
+                issues.append(featureNames[i])
+            elif category==1 and inputData[feature] in data.loc[data['Star Rating']<=1, feature].value_counts().index[:1]:
+                issues.append(featureNames[i])
+        responseData = {'category':category, 'issues': issues}
+        return responseData
+            
 
 if __name__ == "__main__":
     specifications = ['LCD (LED)', 100, 0.35]

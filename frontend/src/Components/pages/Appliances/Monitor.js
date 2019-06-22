@@ -15,16 +15,11 @@ class Monitor extends Component {
       'loading' : false,
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleTech = this.handleTech.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
   handleChange(event) {
     event.preventDefault();
     this.setState({ [event.target.name] : event.target.value });
-  }
-  handleTech(event){
-    event.preventDefault();
-    this.setState({'screenTechnology': event.target.value});
   }
   submitForm(e) {
     e.preventDefault();
@@ -32,7 +27,7 @@ class Monitor extends Component {
     const data = [
         this.state.screenTechnology,
         parseInt(this.state.comparitiveEnergyConsumption),
-        parseInt(this.state.activeStandbyPower)
+        parseFloat(this.state.activeStandbyPower)
     ];
     // console.log(data);
     fetch('http://localhost:5000/api/predict/monitor', {
@@ -52,7 +47,8 @@ class Monitor extends Component {
         console.log(res);
         this.setState({'response':{
           'category' : res.category,
-          'info': res.info
+          'info': res.info,
+          'inference': res.inference
         }})
       })
   }
@@ -72,7 +68,7 @@ class Monitor extends Component {
                 className="form-control"
                 name='screenTechnology'
                 value={this.state.screenTechnology}
-                onChange={this.handleTech}
+                onChange={this.handleChange}
               >
                 <option value="LCD">LCD</option>
                 <option value="LCD (LED)">LCD (LED)</option>
@@ -112,6 +108,7 @@ class Monitor extends Component {
             {!this.state.loading ? "Find Star Rating" : "Submitting..."}
           </button>
         </form>
+        <button className="btn btn-success" onClick={()=>{window.location.href= '/'}}>Back to Home</button>
       </div>
     );
 

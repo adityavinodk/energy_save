@@ -77,7 +77,8 @@ class Dryer extends Component {
         console.log(res);
         this.setState({'response':{
           'category' : res.category,
-          'info': res.info
+          'info': res.info,
+          'inference': res.inference
         }})
       })
   }
@@ -123,7 +124,7 @@ class Dryer extends Component {
             <input
               type='number'
               className="form-control"
-              placeholder='Capacity'
+              placeholder='Enter value in kg'
               name='capacity'
               value={this.state.capacity}
               onChange={this.handleChange}
@@ -262,6 +263,7 @@ class Dryer extends Component {
             {!this.state.loading ? 'Find Star Rating' : 'Submitting...'}
           </button>
         </form>
+        <button className="btn btn-success" onClick={()=>{window.location.href= '/'}}>Back to Home</button>
       </div>
     )
 

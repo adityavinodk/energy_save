@@ -6,6 +6,7 @@ import Footer from '../layout/Footer';
 import Home from '../pages/Home';
 import Dryer from '../pages/Appliances/Dryer';
 import Monitor from '../pages/Appliances/Monitor';
+import WashingMachine from '../pages/Appliances/WashingMachine';
 
 class App extends React.Component {
   render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
               <Route exact path='/' component={Home} />
               <Route path='/dryer' component={Dryer} />
               <Route path='/monitor' component={Monitor} />
+              <Route path='/washing_machine' component={WashingMachine} />
             </Switch>
           </main>
           <Footer />

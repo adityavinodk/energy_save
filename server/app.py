@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 import json
 import config as config
+from inferences.main import createInference
 from api.dryer import predictDryer
 from api.monitor import predictMonitor
 from api.washing_machine import predictWashingMachine
@@ -11,6 +12,9 @@ app.config.from_object(config.DevConfig)
 
 # Serve React App
 @app.route('/')
+@app.route('/dryer')
+@app.route('/monitor')
+@app.route('/washing_machine')
 def my_index():
     return render_template("index.html")
 
@@ -21,7 +25,11 @@ def predict_dryer():
     model = predictDryer(
         specifications, os.path.join(app.config['DATASET_PATH'], 'dryer.csv'))
     prediction = model.predict()
-    return json.dumps({'category': int(prediction), 'info': app.config['PRODUCT_CATEGORIES'][prediction]})
+    info = app.config['PRODUCT_CATEGORIES'][int(prediction['category'])]
+    issues = prediction['issues']
+    category = prediction['category']
+    inferences = createInference(category, issues)
+    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
 
 @app.route('/api/predict/monitor', methods=["POST"])
 def predict_monitor():
@@ -30,7 +38,11 @@ def predict_monitor():
     model = predictMonitor(
         specifications, os.path.join(app.config['DATASET_PATH'], 'monitor.csv'))
     prediction = model.predict()
-    return json.dumps({'category': int(prediction), 'info': app.config['PRODUCT_CATEGORIES'][prediction]})
+    info = app.config['PRODUCT_CATEGORIES'][prediction['category']]
+    issues = prediction['issues']
+    category = prediction['category']
+    inferences = createInference(category, issues)
+    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
 
 @app.route('/api/predict/washing_machine', methods=["POST"])
 def predict_washing_machine():
@@ -39,6 +51,10 @@ def predict_washing_machine():
     model = predictWashingMachine(
         specifications, os.path.join(app.config['DATASET_PATH'], 'washing_machine.csv'))
     prediction = model.predict()
-    return json.dumps({'category': int(prediction), 'info': app.config['PRODUCT_CATEGORIES'][prediction]})
+    info = app.config['PRODUCT_CATEGORIES'][prediction['category']]
+    issues = prediction['issues']
+    category = prediction['category']
+    inferences = createInference(category, issues)
+    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
 
 app.run(debug=True)

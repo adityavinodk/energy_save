@@ -10,9 +10,14 @@ class predictWashingMachine():
     def __init__(self, specifications, dataset_path):
         self.specifications = specifications
         self.dataset_path = dataset_path
+        self.problemFeatures = ['Program Time', 'standbyPowerUsage', 'powerConsMode', 'Cap', 'CEC Cold', 'CEC_', 'Cold Wat Cons']
+        self.booleanFeatures = ['Type', 'delayStartMode', 'Conn_Mode']
 
     def predict(self):
         # Kindly refer ../../inferences/washing_machine.ipynb for the logic of the following code
+        # specifications = ['AS/NZS 2040.2:2005', 'WHIRLPOOL', 7, 150, 400, 100, True, 'Dual', 'India', True, 565, 'Non Drum', 850, 'No', 0.4, 'normal', 0.45, 'Drum', 600, 120]
+
+        # order_of_training_data = ['ApplStandard', 'Brand', 'Cap', 'CEC Cold', 'CEC_', 'Cold Water Cons', 'Combination', 'Conn_Mode', 'Country', 'delayStartMode', 'Depth', 'DetergentType', 'Height', 'internal_heater', 'powerConsMode', 'Prog Name', 'standbyPowerUsage', 'Type', 'Width', 'Program Time']
         specifications = self.specifications
         dataset_path = self.dataset_path
         
@@ -283,13 +288,33 @@ class predictWashingMachine():
 
         train_x = data.drop(['Brand_Country', 'Brand', 'Country'], axis=1)
         test_x = train_x.loc[len(data)-1]
+        inputData = test_x
         test_x = pd.DataFrame([test_x.tolist()], columns = train_x.columns.values)
         train_x = train_x[:-1]
+        realData = train_x.copy()
+        realData['New Star'] = pd.Series(train_y.to_numpy(), index=train_x.index)
 
         knn = KNeighborsClassifier(n_neighbors = 3, leaf_size=5, algorithm='auto')
         knn.fit(train_x, train_y)  
         test_y = knn.predict(test_x)
-        return test_y[0]
+        return self.inferenceBuilder(realData, inputData, test_y[0])
+
+    def inferenceBuilder(self, data, inputData, category):
+        issues = []
+        booleanFeatureNames = ['Type of Appliance being Non-Drum', 'Delay Start Mode being False', 'Connection Mode being Drum']
+        featureNames = ['Program Running Time', 'Power usage in Standby Mode', 'Power Consumption in Mode', 'Capacity', 'Comparative Energy Consumption for Cold Use', 'Comparative Energy Consumption for Warm Use', 'Cold Water Consumption']
+        for i in range(len(self.booleanFeatures)):
+            feature = self.booleanFeatures[i]
+            if category!=2 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
+                issues.append(booleanFeatureNames[i])
+        for i in range(len(self.problemFeatures)):
+            feature = self.problemFeatures[i]
+            if category==0 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:2]:
+                issues.append(featureNames[i])
+            elif category==1 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
+                issues.append(featureNames[i])
+        responseData = {'category':category, 'issues': issues}
+        return responseData
 
 if __name__ == "__main__":
     specifications = ['AS/NZS 2040.2:2005', 'WHIRLPOOL', 7, 150, 400, 100, True, 'Dual', 'India', True, 565, 'Non Drum', 850, 'No', 0.4, 'normal', 0.45, 'Drum', 600, 120]

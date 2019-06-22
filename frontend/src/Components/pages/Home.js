@@ -32,6 +32,7 @@ class Home extends Component {
                                 <option value="" hidden>Select an Appliance</option>
                                 <option value="dryer">Dryer</option>
                                 <option value="monitor">Monitor</option>
+                                <option value="washing_machine">Washing Machine</option>
                             </select>
                     </div>
                     <input type="submit" value="Select" className="btn btn-lg btn-success w-25" onClick={this.selectAppliance} />
