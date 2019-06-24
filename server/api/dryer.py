@@ -1,34 +1,30 @@
 import os
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
-import scipy as sc
-import seaborn as sns
-import math
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC, LinearSVC
+from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_score, recall_score, f1_score
-
 
 class predictDryer():
 
     def __init__(self, specifications, dataset_path):
         self.specifications = specifications
         self.dataset_path = dataset_path
+        # Adding problematic features
+        self.problemFeatures = ['New CEC', 'Prog Time', 'Type', 'Cap']
+        self.booleanFeatures = ['Combination']
 
     def predict(self):
         # Kindly refer ../../inferences/dryer.ipynb for the logic of the following code
 
-        # order_of_training_data = ['Appliance Standard', 'Brand', 'Capacity', 'Combination', 'Control', 'Country', 'Depth','Height', 'Current Comparitive Energy Consumption', 'Program Name', 'Program Time', 'Type', 'Width', 'Year of Expiry']
+        # order_of_training_data = ['Appliance Standard', 'Brand', 'Capacity', 'Combination', 'Control', 'Country', 'Depth','Height', 'Current Comparitive Energy Consumption', 'Program Name', 'Program Time', 'Type', 'Width']
         specifications = self.specifications
         dataset_path = self.dataset_path
         
         data = pd.read_csv(dataset_path)
         
         columns = ['Model No', 'Family Name', 'Sold_in', 'N-Standard', 'SubmitStatus', 'Submit_ID', 'GrandDate', 'Product Class', 'New SRI', 'Tot_Wat_Cons', 'Test_Moist_Remove',
-                   'Product Website', 'Old Star Rating', 'Star Image Large', 'Star Image Small', 'Availability Status', 'Representative Brand URL']
+                   'Product Website', 'Old Star Rating', 'Star Image Large', 'Star Image Small', 'Availability Status', 'Representative Brand URL', 'ExpDate']
         data.drop(columns, axis=1, inplace=True)
 
         # Converting New Star to different classes
@@ -124,24 +120,6 @@ class predictDryer():
             data.at[index, 'Width'] = value
         data['Width'] = data['Width'].astype(int)
 
-        # Filling up missing ExpDate values
-        mode_year = int(data.ExpDate.value_counts().index[0].split('/')[2])
-        data.ExpDate = data.ExpDate.fillna('0')
-        for index, row in data.iterrows():
-            if data.at[index, 'ExpDate']:
-                if len(data.at[index, 'ExpDate'].split('/')) == 3:
-                    date = int(data.at[index, 'ExpDate'].split('/')[2])
-                else:
-                    date = mode_year
-
-            if date > 10 and date < 19: value = 0
-            elif date >= 19 and date < 21: value = 1
-            elif date >= 21 and date <= 22: value = 2
-            else: value = 3
-            data.at[index, 'ExpDate'] = value
-
-        data['ExpDate'] = data['ExpDate'].astype(int)
-
         # Setting Capacity under different integer classes
         for index, rows in data.iterrows():
             capacity = int(data.at[index, 'Cap'])
@@ -229,17 +207,40 @@ class predictDryer():
         # For now we shall not consider the effects of Brand_country, Brand and Country
         train_x = data.drop(['Brand_Country', 'Brand', 'Country'], axis=1)
         test_x = train_x.loc[len(data)-1]
+        inputData = test_x
         test_x = pd.DataFrame([test_x.tolist()], columns = train_x.columns.values)
         train_x = train_x[:-1]
+        realData = train_x.copy()
+        realData['New Star'] = pd.Series(train_y.to_numpy(), index=train_x.index)
 
         # KNN Neighbours Classification
         # TODO: Fine tuning of hyper parameters
-        knn = KNeighborsClassifier(n_neighbors=3)
+        knn = KNeighborsClassifier(n_neighbors = 3, leaf_size=5, algorithm='ball_tree')
         knn.fit(train_x, train_y)
-        test_y = knn_predictions = knn.predict(test_x)
-        return test_y[0]
+        test_y = knn.predict(test_x)
+        return self.inferenceBuilder(realData, inputData, test_y[0])
+
+    def inferenceBuilder(self, data, inputData, category):
+        # This functions checks if the problematic features values are contributing to a low star rating, if they are they are considered to be issues
+        issues = []
+        booleanFeatureNames = ['Condensor Combination']
+        featureNames = ['Comparative Energy Consumption', 'Time of usage of Appliance', 'Type of appliance', 'Capacity of appliance']
+        for i in range(len(self.booleanFeatures)):
+            feature = self.booleanFeatures[i]
+            if category!=2 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
+                issues.append(booleanFeatureNames[i])
+        for i in range(len(self.problemFeatures)):
+            feature = self.problemFeatures[i]
+            if category==0 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:2]:
+                issues.append(featureNames[i])
+            elif category==1 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
+                issues.append(featureNames[i])
+        responseData = {'category':category, 'issues': issues}
+        return responseData
 
 if __name__ == "__main__":
-    specifications = ['AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)', 'ASKO', 8, True, 'Timer', 'Slovenia', 890, 650, 200, 'Heat and dry', 230, 'Vented', 650, '10/26/2020']
-    a = predictDryer(specifications, os.path.abspath('../datasets/dryer.csv'))
+    specifications = ['AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)', 'ASKO', 8, True, 'Timer', 'Slovenia', 890, 650, 200, 'Heat and dry', 230, 'Vented', 650]
+    ROOT_DIRECTORY_PATH = os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir))
+    DATASET_PATH = os.path.join(ROOT_DIRECTORY_PATH, 'datasets')
+    a = predictDryer(specifications, os.path.join(DATASET_PATH, 'dryer.csv'))
     print(a.predict())

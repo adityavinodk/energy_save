@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/adityavinodk/energy_consumption",
     classifiers=(
         'Programming Language :: Python :: 3.7',
-        "License :: MIT License",
+        "License :: Apache 2.0 License",
         "Operating System :: OS Independent",
     ),
 )
