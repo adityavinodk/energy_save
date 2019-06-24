@@ -68,7 +68,7 @@ class Dryer extends Component {
       return;
     }
     // console.log(data);
-    fetch('http://localhost:5000/api/predict/dryer', {
+    fetch('/api/predict/dryer', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

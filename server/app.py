@@ -10,6 +10,13 @@ from api.washing_machine import predictWashingMachine
 app = Flask(__name__)
 app.config.from_object(config.DevConfig)
 
+def jsonResponse(prediction):
+    info = app.config['PRODUCT_CATEGORIES'][int(prediction['category'])]
+    issues = prediction['issues']
+    category = prediction['category']
+    inferences = createInference(category, issues)
+    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
+
 # Serve React App
 @app.route('/')
 @app.route('/dryer')
@@ -22,39 +29,23 @@ def my_index():
 def predict_dryer():
     req_data = request.get_json()
     specifications = req_data['specifications']
-    model = predictDryer(
-        specifications, os.path.join(app.config['DATASET_PATH'], 'dryer.csv'))
+    model = predictDryer(specifications, os.path.join(app.config['DATASET_PATH'], 'dryer.csv'))
     prediction = model.predict()
-    info = app.config['PRODUCT_CATEGORIES'][int(prediction['category'])]
-    issues = prediction['issues']
-    category = prediction['category']
-    inferences = createInference(category, issues)
-    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
+    return jsonResponse(prediction)
 
 @app.route('/api/predict/monitor', methods=["POST"])
 def predict_monitor():
     req_data = request.get_json()
     specifications = req_data['specifications']
-    model = predictMonitor(
-        specifications, os.path.join(app.config['DATASET_PATH'], 'monitor.csv'))
+    model = predictMonitor(specifications, os.path.join(app.config['DATASET_PATH'], 'monitor.csv'))
     prediction = model.predict()
-    info = app.config['PRODUCT_CATEGORIES'][prediction['category']]
-    issues = prediction['issues']
-    category = prediction['category']
-    inferences = createInference(category, issues)
-    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
+    return jsonResponse(prediction)
 
 @app.route('/api/predict/washing_machine', methods=["POST"])
 def predict_washing_machine():
     req_data = request.get_json()
     specifications = req_data['specifications']
-    model = predictWashingMachine(
-        specifications, os.path.join(app.config['DATASET_PATH'], 'washing_machine.csv'))
+    model = predictWashingMachine(specifications, os.path.join(app.config['DATASET_PATH'], 'washing_machine.csv'))
     prediction = model.predict()
-    info = app.config['PRODUCT_CATEGORIES'][prediction['category']]
-    issues = prediction['issues']
-    category = prediction['category']
-    inferences = createInference(category, issues)
-    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
-
+    return jsonResponse(prediction)
 app.run(debug=True)

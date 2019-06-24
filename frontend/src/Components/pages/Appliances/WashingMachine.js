@@ -82,7 +82,7 @@ class WashingMachine extends Component {
       return;
     }
     // console.log(data);
-    fetch('http://localhost:5000/api/predict/washing_machine', {
+    fetch('/api/predict/washing_machine', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

@@ -10,6 +10,7 @@ class predictWashingMachine():
     def __init__(self, specifications, dataset_path):
         self.specifications = specifications
         self.dataset_path = dataset_path
+        # Adding problematic features
         self.problemFeatures = ['Program Time', 'standbyPowerUsage', 'powerConsMode', 'Cap', 'CEC Cold', 'CEC_', 'Cold Wat Cons']
         self.booleanFeatures = ['Type', 'delayStartMode', 'Conn_Mode']
 
@@ -300,6 +301,7 @@ class predictWashingMachine():
         return self.inferenceBuilder(realData, inputData, test_y[0])
 
     def inferenceBuilder(self, data, inputData, category):
+        # This functions checks if the problematic features values are contributing to a low star rating, if they are they are considered to be issues
         issues = []
         booleanFeatureNames = ['Type of Appliance being Non-Drum', 'Delay Start Mode being False', 'Connection Mode being Drum']
         featureNames = ['Program Running Time', 'Power usage in Standby Mode', 'Power Consumption in Mode', 'Capacity', 'Comparative Energy Consumption for Cold Use', 'Comparative Energy Consumption for Warm Use', 'Cold Water Consumption']

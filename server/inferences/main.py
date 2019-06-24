@@ -1,6 +1,7 @@
 def createInference(category, issues):
+    # Creates Inference in the form of a text, according to the categories and issues
     information = ''
-    if len(issues)==0: information+='We see no minor issues at the moment, don\'t forget to regularly reservice your appliance!'
+    if len(issues)==0: information+='We see no issues at the moment, don\'t forget to regularly reservice your appliance!'
     else: 
         if category == 0:
             information += 'Currently we see issues with ' + \

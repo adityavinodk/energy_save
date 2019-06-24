@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import '../styles/app.css';
 // import Header from '../layout/Header';
-import Footer from '../layout/footer';
+import Footer from '../layout/Footer';
 import Home from '../pages/Home';
 import Dryer from '../pages/Appliances/Dryer';
 import Monitor from '../pages/Appliances/Monitor';

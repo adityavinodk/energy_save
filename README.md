@@ -18,7 +18,7 @@ npm run build
 cd ../server
 python app.py
 ```
-Then open `localhost:5000` your browser to start the application.
+Then open `localhost:5000` your browser to start the application. Test the API's using the inputs from `sample_inputs.txt` file.
 
 ## About the Project
 We have used Jupyter Notebook for visualization and making inferences of the data. We are running the web application using Flask server and using React for the front-end of the application. We have REST API calls to all the predictions are made currently using linear classifier models and average around 85% accuracy. 

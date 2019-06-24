@@ -10,6 +10,7 @@ class predictDryer():
     def __init__(self, specifications, dataset_path):
         self.specifications = specifications
         self.dataset_path = dataset_path
+        # Adding problematic features
         self.problemFeatures = ['New CEC', 'Prog Time', 'Type', 'Cap']
         self.booleanFeatures = ['Combination']
 
@@ -220,6 +221,7 @@ class predictDryer():
         return self.inferenceBuilder(realData, inputData, test_y[0])
 
     def inferenceBuilder(self, data, inputData, category):
+        # This functions checks if the problematic features values are contributing to a low star rating, if they are they are considered to be issues
         issues = []
         booleanFeatureNames = ['Condensor Combination']
         featureNames = ['Comparative Energy Consumption', 'Time of usage of Appliance', 'Type of appliance', 'Capacity of appliance']

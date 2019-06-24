@@ -10,6 +10,7 @@ class predictMonitor():
     def __init__(self, specifications, dataset_path):
         self.specifications = specifications
         self.dataset_path = dataset_path
+        # Adding problematic features
         self.problemFeatures = ['Screen Technology', 'Comparative Energy Consumption', 'Active Standby Power']
 
     def predict(self):
@@ -90,6 +91,7 @@ class predictMonitor():
         return self.inferenceBuilder(realData, inputData, test_y[0])
     
     def inferenceBuilder(self, data, inputData, category):
+        # This functions checks if the problematic features values are contributing to a low star rating, if they are they are considered to be issues
         issues = []
         featureNames = ['Technology running the screen', 'Comparative Energy Consumption', 'Power used in Standby Mode']
         for i in range(len(self.problemFeatures)):

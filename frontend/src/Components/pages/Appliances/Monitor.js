@@ -8,7 +8,7 @@ class Monitor extends Component {
     // order_of_training_data = ['Screen Technology', 'Comparitive Energy Consumption', 'Active Standby Power']
     // specifications = ['LCD (LED)', 100, 0.35]
     this.state = {
-      screenTechnology: '',
+      screenTechnology: 'LCD',
       comparitiveEnergyConsumption: '',
       activeStandbyPower: '',
       response: '',
@@ -37,7 +37,7 @@ class Monitor extends Component {
       return;
     }
     // console.log(data);
-    fetch('http://localhost:5000/api/predict/monitor', {
+    fetch('/api/predict/monitor', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

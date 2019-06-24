@@ -10,3 +10,4 @@ class DevConfig(Config):
     SECRET_KEY = 'energyiseverythingtoeveryoneforsurvival'
     PRODUCT_CATEGORIES = ['Poor: The appliance seems to be using up a lot of energy. ',
                   'OK: The appliance seems to be operating just fine. ', 'Good: The appliance is in good condition. ']
+    APPLIANCES = ['dryer', 'monitor', 'washing_machine']
