@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import '../styles/app.css';
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
+// import Header from '../layout/Header';
+import Footer from '../layout/footer';
 import Home from '../pages/Home';
 import Dryer from '../pages/Appliances/Dryer';
 import Monitor from '../pages/Appliances/Monitor';
@@ -13,7 +13,6 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Header />
           <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <a className="navbar-brand text-success font-weight-bold mx-auto order-0" href="/">EnergySave</a>
           </nav>
