@@ -94,13 +94,16 @@ class predictMonitor():
         # This functions checks if the problematic features values are contributing to a low star rating, if they are they are considered to be issues
         issues = []
         featureNames = ['Technology running the screen', 'Comparative Energy Consumption', 'Power used in Standby Mode']
+        if category==0: starRange = "Less than or equal to 4 stars on 10"
+        elif category==1: starRange = "Greater than 4 but lesser than  6 stars on 10"
+        else: starRange = "More than 6 stars on 10"
         for i in range(len(self.problemFeatures)):
             feature = self.problemFeatures[i]
             if category==0 and inputData[feature] in data.loc[data['Star Rating']<=1, feature].value_counts().index[:2]:
                 issues.append(featureNames[i])
             elif category==1 and inputData[feature] in data.loc[data['Star Rating']<=1, feature].value_counts().index[:1]:
                 issues.append(featureNames[i])
-        responseData = {'category':category, 'issues': issues}
+        responseData = {'category':category, 'issues': issues, 'starRange': starRange}
         return responseData
             
 

@@ -21,6 +21,9 @@ class Response extends Component {
           <div id='category' className='h4'>
             Category {this.props.response.category}
           </div>
+          <div id='category' className='h6'>
+            Range {this.props.response.starRange}
+          </div>
           <div id='info' className='lead mb-3'>
             {this.props.response.info}
           </div>

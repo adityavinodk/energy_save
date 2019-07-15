@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Response from '../../layout/Response'
+import Response from '../Response'
 import headers from '../../utils/Headers'
 
 class Dryer extends Component {
@@ -34,9 +34,7 @@ class Dryer extends Component {
   }
   handleCombination (event) {
     event.preventDefault()
-    var value
-
-    var combination = this.state.Combination
+    var value, combination = this.state.Combination
     if (combination === 'true') {
       value = true
     } else value = false
@@ -87,7 +85,8 @@ class Dryer extends Component {
           response: {
             category: res.category,
             info: res.info,
-            inference: res.inference
+            inference: res.inference,
+            starRange: res.starRange
           }
         })
       })
@@ -97,7 +96,7 @@ class Dryer extends Component {
     var content
     const formContent = (
       <div>
-        <div className='container-fluid mb-5 display-4'>Dryer Details</div>
+        <div className='container-fluid mb-5 display-4'>Tell us about your Dryer</div>
         <form className='container w-50'>
           <div className='form-group'>
             <label className='form-inline'>Appliance Standard</label>

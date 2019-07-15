@@ -225,6 +225,9 @@ class predictDryer():
         issues = []
         booleanFeatureNames = ['Condensor Combination']
         featureNames = ['Comparative Energy Consumption', 'Time of usage of Appliance', 'Type of appliance', 'Capacity of appliance']
+        if category==0: starRange = "Less than 2 stars on 10"
+        elif category==1: starRange = "2 stars on 10"
+        else: starRange = "More than 2 stars on 10"
         for i in range(len(self.booleanFeatures)):
             feature = self.booleanFeatures[i]
             if category!=2 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
@@ -235,7 +238,7 @@ class predictDryer():
                 issues.append(featureNames[i])
             elif category==1 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
                 issues.append(featureNames[i])
-        responseData = {'category':category, 'issues': issues}
+        responseData = {'category':category, 'issues': issues, 'starRange':starRange}
         return responseData
 
 if __name__ == "__main__":

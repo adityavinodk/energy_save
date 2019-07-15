@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Response from '../../layout/Response'
+import Response from '../Response'
 import headers from '../../utils/Headers'
 
 class Monitor extends Component {
@@ -56,7 +56,8 @@ class Monitor extends Component {
           response: {
             category: res.category,
             info: res.info,
-            inference: res.inference
+            inference: res.inference,
+            starRange: res.starRange
           }
         })
       })
@@ -69,7 +70,7 @@ class Monitor extends Component {
     var content
     const formContent = (
       <div>
-        <div className='container-fluid mb-5 display-4'>Monitor Details</div>
+        <div className='container-fluid mb-5 display-4'>Tell us about your Monitor</div>
         <form className='container w-50'>
           <div className='form-group'>
             <label className='form-inline'>Screen Technology</label>

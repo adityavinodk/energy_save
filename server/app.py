@@ -14,8 +14,9 @@ def jsonResponse(prediction):
     info = app.config['PRODUCT_CATEGORIES'][int(prediction['category'])]
     issues = prediction['issues']
     category = prediction['category']
+    starRange = prediction['starRange']
     inferences = createInference(category, issues)
-    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences})
+    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences, 'starRange':starRange})
 
 # Serve React App
 @app.route('/')

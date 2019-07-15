@@ -305,6 +305,9 @@ class predictWashingMachine():
         issues = []
         booleanFeatureNames = ['Type of Appliance being Non-Drum', 'Delay Start Mode being False', 'Connection Mode being Drum']
         featureNames = ['Program Running Time', 'Power usage in Standby Mode', 'Power Consumption in Mode', 'Capacity', 'Comparative Energy Consumption for Cold Use', 'Comparative Energy Consumption for Warm Use', 'Cold Water Consumption']
+        if category==0: starRange = "Less than or equal to 2 stars on 10"
+        elif category==1: starRange = "Greater than 2 but lesser than 4 stars on 10"
+        else: starRange = "More than or equal to 4 stars on 10"
         for i in range(len(self.booleanFeatures)):
             feature = self.booleanFeatures[i]
             if category!=2 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
@@ -315,7 +318,7 @@ class predictWashingMachine():
                 issues.append(featureNames[i])
             elif category==1 and inputData[feature] in data.loc[data['New Star']<=1, feature].value_counts().index[:1]:
                 issues.append(featureNames[i])
-        responseData = {'category':category, 'issues': issues}
+        responseData = {'category':category, 'issues': issues, 'starRange': starRange}
         return responseData
 
 if __name__ == "__main__":

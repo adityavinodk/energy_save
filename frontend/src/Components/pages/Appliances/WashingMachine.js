@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Response from '../../layout/Response'
+import Response from '../Response'
 import headers from '../../utils/Headers'
 
 class WashingMachine extends Component {
@@ -101,7 +101,8 @@ class WashingMachine extends Component {
           response: {
             category: res.category,
             info: res.info,
-            inference: res.inference
+            inference: res.inference,
+            starRange: res.starRange
           }
         })
       })
@@ -112,7 +113,7 @@ class WashingMachine extends Component {
     const formContent = (
       <div>
         <div className='container-fluid mb-5 display-4'>
-          Washing Machine Details
+          Tell us about your Washing Machine
         </div>
         <form className='container w-50'>
           <div className='form-group'>
