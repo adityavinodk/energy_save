@@ -21,7 +21,7 @@ class Home extends Component {
             <div className="container">
                 <div className="container-fluid">
                 <div className="h4 text-justify"><label className="text-success">EnergySave</label> helps to find the areas of high energy consumption in households based on predicting the health of the appliances</div>
-                <div className="lead text-justify mb-3">Our predictions models accurately predict the star rating of the appliances, old or new, with a number of features, 
+                <div className="lead text-justify mb-3">Our prediction models accurately predict the star rating of the appliances, old or new, with a number of features, 
                     and present a number of valuable insights on the ways of reducing the wastage
                 </div>
                 </div>

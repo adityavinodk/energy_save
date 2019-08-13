@@ -33,7 +33,11 @@ We have used Jupyter Notebook for visualization and making inferences of the dat
 
 ## OpenSource Contribution 
 We would like the developer community to contribute to this project - 
-- Add more useful datasets which provide a larger idea of the usage of the appliances at households
-- Build a Neural Network model which provides feature extraction of each appliance
-- Provide visualitzation of the inferences made on the website through charts and plots
+- Add more useful datasets which provide a larger idea of the usage of the appliances at households.
+- Build a Neural Network model which provides feature extraction of each appliance.
+- Provide visualitzation of the inferences made on the website through charts and plots.
+
 Send Pull Requests and we shall review them!
+
+## Hackathon files
+All the files can be found in the `hack_files` directory.
