@@ -29,12 +29,12 @@ class Monitor extends Component {
       parseInt(this.state.comparitiveEnergyConsumption),
       parseFloat(this.state.activeStandbyPower)
     ]
-    if(data.includes(NaN) || data.includes('')){
-      alert("Fill all Fields")
+    if (data.includes(NaN) || data.includes('')) {
+      alert('Fill all Fields')
       this.setState({
-        loading: false,
+        loading: false
       })
-      return;
+      return
     }
     // console.log(data);
     fetch('/api/predict/monitor', {
@@ -51,13 +51,13 @@ class Monitor extends Component {
     })
       .then(response => response.json())
       .then(res => {
-        // console.log(res)
         this.setState({
           response: {
             category: res.category,
             info: res.info,
             inference: res.inference,
-            starRange: res.starRange
+            starRange: res.starRange,
+            links: res.links
           }
         })
       })
@@ -70,7 +70,9 @@ class Monitor extends Component {
     var content
     const formContent = (
       <div>
-        <div className='container-fluid mb-5 display-4'>Tell us about your Monitor</div>
+        <div className='container-fluid mb-5 display-4'>
+          Tell us about your Monitor
+        </div>
         <form className='container w-50'>
           <div className='form-group'>
             <label className='form-inline'>Screen Technology</label>

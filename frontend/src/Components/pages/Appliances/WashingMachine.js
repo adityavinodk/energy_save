@@ -102,7 +102,8 @@ class WashingMachine extends Component {
             category: res.category,
             info: res.info,
             inference: res.inference,
-            starRange: res.starRange
+            starRange: res.starRange,
+            links: res.links,
           }
         })
       })

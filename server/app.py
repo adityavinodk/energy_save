@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request
 import json
 import config as config
-from inferences.main import createInference
+from inferences.main import createInference, createTipLinks
 from api.dryer import predictDryer
 from api.monitor import predictMonitor
 from api.washing_machine import predictWashingMachine
@@ -10,13 +10,13 @@ from api.washing_machine import predictWashingMachine
 app = Flask(__name__)
 app.config.from_object(config.DevConfig)
 
-def jsonResponse(prediction):
+def jsonResponse(prediction, links):
     info = app.config['PRODUCT_CATEGORIES'][int(prediction['category'])]
     issues = prediction['issues']
     category = prediction['category']
     starRange = prediction['starRange']
     inferences = createInference(category, issues)
-    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences, 'starRange':starRange})
+    return json.dumps({'category': int(prediction['category']), 'info': info, 'inference':inferences, 'starRange':starRange, 'links': links})
 
 # Serve React App
 @app.route('/')
@@ -32,6 +32,7 @@ def predict_dryer():
     specifications = req_data['specifications']
     model = predictDryer(specifications, os.path.join(app.config['DATASET_PATH'], 'dryer.csv'))
     prediction = model.predict()
+    links = createTipLinks('dryer')
     return jsonResponse(prediction)
 
 @app.route('/api/predict/monitor', methods=["POST"])
@@ -40,7 +41,8 @@ def predict_monitor():
     specifications = req_data['specifications']
     model = predictMonitor(specifications, os.path.join(app.config['DATASET_PATH'], 'monitor.csv'))
     prediction = model.predict()
-    return jsonResponse(prediction)
+    links = createTipLinks('computer monitor')
+    return jsonResponse(prediction, links)
 
 @app.route('/api/predict/washing_machine', methods=["POST"])
 def predict_washing_machine():
@@ -48,5 +50,6 @@ def predict_washing_machine():
     specifications = req_data['specifications']
     model = predictWashingMachine(specifications, os.path.join(app.config['DATASET_PATH'], 'washing_machine.csv'))
     prediction = model.predict()
+    links = createTipLinks('washing maching')
     return jsonResponse(prediction)
 app.run(debug=True)

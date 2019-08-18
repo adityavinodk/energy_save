@@ -1,3 +1,9 @@
+import time
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
+from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
+
 def createInference(category, issues):
     # Creates Inference in the form of a text, according to the categories and issues
     information = ''
@@ -13,3 +19,18 @@ def createInference(category, issues):
         else:
             information += 'Everything looks great!'
     return information
+def createTipLinks(appliance):
+    links = []
+    query = "save energy tips " + appliance
+    query = query.replace(' ', '+')
+    executable_path = "C:/Users/Asus/Downloads/chromedriver.exe"
+    options = webdriver.ChromeOptions()
+    options.add_argument("headless")
+    driver = webdriver.Chrome(executable_path=executable_path, chrome_options=options)
+    driver.get("https://www.google.com/search?q="+query)
+    results = driver.find_elements_by_css_selector('div.g')
+    for i in range(0,3,2):
+        link = results[i].find_element_by_tag_name("a")
+        href = link.get_attribute("href")
+        links.append(href)
+    return links

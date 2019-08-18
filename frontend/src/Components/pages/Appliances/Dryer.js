@@ -65,7 +65,6 @@ class Dryer extends Component {
       })
       return;
     }
-    // console.log(data);
     fetch('/api/predict/dryer', {
       method: 'POST',
       mode: 'cors',
@@ -80,13 +79,13 @@ class Dryer extends Component {
     })
       .then(response => response.json())
       .then(res => {
-        console.log(res)
         this.setState({
           response: {
             category: res.category,
             info: res.info,
             inference: res.inference,
-            starRange: res.starRange
+            starRange: res.starRange,
+            links: res.links,
           }
         })
       })
@@ -294,7 +293,7 @@ class Dryer extends Component {
     )
 
     if (this.state.response) {
-      content = <Response response={this.state.response} appliance='Dryer' />
+      content = <Response response={this.state.response} appliance='dryer' />
     } else content = formContent
     return <div>{content}</div>
   }

@@ -14,6 +14,12 @@ class Response extends Component {
   }
 
   render () {
+    const links = this.props.response.links
+    const listItems = links.map(links => (
+      <li>
+        <a href={links}>{links}</a>
+      </li>
+    ))
     return (
       <div className='jumbotron row'>
         <div className='col-4' />
@@ -21,7 +27,7 @@ class Response extends Component {
           <div id='category' className='h4'>
             Category {this.props.response.category}
           </div>
-          <div id='category' className='h6'>
+          <div id='star_range' className='h6'>
             Range {this.props.response.starRange}
           </div>
           <div id='info' className='lead mb-3'>
@@ -29,6 +35,10 @@ class Response extends Component {
           </div>
           <div id='inference' className='font-italic mb-4'>
             {this.props.response.inference}
+          </div>
+          <div id='links'>
+            <label>Helpful Links</label>
+            <ul>{listItems}</ul>
           </div>
           <button
             className='btn btn-success'
