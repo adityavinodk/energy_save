@@ -28,8 +28,8 @@ def createTipLinks(appliance):
     options.add_argument("headless")
     driver = webdriver.Chrome(executable_path=executable_path, chrome_options=options)
     driver.get("https://www.google.com/search?q="+query)
-    results = driver.find_elements_by_css_selector('div.g')
-    for i in range(0,3,2):
+    results = driver.find_elements_by_css_selector('div.r')
+    for i in range(3):
         link = results[i].find_element_by_tag_name("a")
         href = link.get_attribute("href")
         links.append(href)

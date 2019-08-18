@@ -33,7 +33,7 @@ def predict_dryer():
     model = predictDryer(specifications, os.path.join(app.config['DATASET_PATH'], 'dryer.csv'))
     prediction = model.predict()
     links = createTipLinks('dryer')
-    return jsonResponse(prediction)
+    return jsonResponse(prediction, links)
 
 @app.route('/api/predict/monitor', methods=["POST"])
 def predict_monitor():
@@ -51,5 +51,5 @@ def predict_washing_machine():
     model = predictWashingMachine(specifications, os.path.join(app.config['DATASET_PATH'], 'washing_machine.csv'))
     prediction = model.predict()
     links = createTipLinks('washing maching')
-    return jsonResponse(prediction)
+    return jsonResponse(prediction, links)
 app.run(debug=True)
