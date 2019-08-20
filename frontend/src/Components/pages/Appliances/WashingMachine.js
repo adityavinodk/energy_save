@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Response from '../Response'
 import headers from '../../utils/Headers'
+import ServerError from '../../ServerError'
 
 class WashingMachine extends Component {
   constructor () {
@@ -29,7 +30,8 @@ class WashingMachine extends Component {
       width: '',
       progTime: '',
       response: '',
-      loading: false
+      loading: false,
+      serverError: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -74,14 +76,13 @@ class WashingMachine extends Component {
       parseInt(this.state.width),
       parseInt(this.state.progTime)
     ]
-    if(data.includes(NaN) || data.includes('')){
-      alert("Fill all Fields")
+    if (data.includes(NaN) || data.includes('')) {
+      alert('Fill all Fields')
       this.setState({
-        loading: false,
+        loading: false
       })
-      return;
+      return
     }
-    // console.log(data);
     fetch('/api/predict/washing_machine', {
       method: 'POST',
       mode: 'cors',
@@ -96,16 +97,18 @@ class WashingMachine extends Component {
     })
       .then(response => response.json())
       .then(res => {
-        console.log(res)
         this.setState({
           response: {
             category: res.category,
             info: res.info,
             inference: res.inference,
             starRange: res.starRange,
-            links: res.links,
+            links: res.links
           }
         })
+      })
+      .catch(() => {
+        this.setState({ serverError: true })
       })
   }
 
@@ -406,6 +409,8 @@ class WashingMachine extends Component {
       content = (
         <Response response={this.state.response} appliance='washing_machine' />
       )
+    } else if (this.state.serverError) {
+      content = <ServerError />
     } else content = formContent
     return <div>{content}</div>
   }

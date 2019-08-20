@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Response from '../Response'
 import headers from '../../utils/Headers'
+import ServerError from '../../ServerError'
 
 class Dryer extends Component {
   constructor () {
@@ -22,7 +23,8 @@ class Dryer extends Component {
       type: 'Vented',
       width: '',
       response: '',
-      loading: false
+      loading: false,
+      serverError: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCombination = this.handleCombination.bind(this)
@@ -34,7 +36,9 @@ class Dryer extends Component {
   }
   handleCombination (event) {
     event.preventDefault()
-    var value, combination = this.state.Combination
+    var value
+
+    var combination = this.state.Combination
     if (combination === 'true') {
       value = true
     } else value = false
@@ -58,12 +62,12 @@ class Dryer extends Component {
       this.state.type,
       parseInt(this.state.width)
     ]
-    if(data.includes(NaN) || data.includes('')){
-      alert("Fill all Fields")
+    if (data.includes(NaN) || data.includes('')) {
+      alert('Fill all Fields')
       this.setState({
-        loading: false,
+        loading: false
       })
-      return;
+      return
     }
     fetch('/api/predict/dryer', {
       method: 'POST',
@@ -85,9 +89,12 @@ class Dryer extends Component {
             info: res.info,
             inference: res.inference,
             starRange: res.starRange,
-            links: res.links,
+            links: res.links
           }
         })
+      })
+      .catch(() => {
+        this.setState({ serverError: true })
       })
   }
 
@@ -95,7 +102,9 @@ class Dryer extends Component {
     var content
     const formContent = (
       <div>
-        <div className='container-fluid mb-5 display-4'>Tell us about your Dryer</div>
+        <div className='container-fluid mb-5 display-4'>
+          Tell us about your Dryer
+        </div>
         <form className='container w-50'>
           <div className='form-group'>
             <label className='form-inline'>Appliance Standard</label>
@@ -210,6 +219,18 @@ class Dryer extends Component {
           </div>
 
           <div className='form-group'>
+            <label className='form-inline'>Width</label>
+            <input
+              type='number'
+              className='form-control'
+              placeholder='Width in mm'
+              name='width'
+              value={this.state.width}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <div className='form-group'>
             <label className='form-inline'>
               Current Comparitive Energy Consumption
             </label>
@@ -259,18 +280,6 @@ class Dryer extends Component {
               <option value='Condenser'>Condenser</option>
             </select>
           </div>
-
-          <div className='form-group'>
-            <label className='form-inline'>Width</label>
-            <input
-              type='number'
-              className='form-control'
-              placeholder='Width in mm'
-              name='width'
-              value={this.state.width}
-              onChange={this.handleChange}
-            />
-          </div>
           <button
             type='submit'
             className='btn btn-success'
@@ -294,6 +303,8 @@ class Dryer extends Component {
 
     if (this.state.response) {
       content = <Response response={this.state.response} appliance='dryer' />
+    } else if (this.state.serverError) {
+      content = <ServerError />
     } else content = formContent
     return <div>{content}</div>
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Response from '../Response'
 import headers from '../../utils/Headers'
+import ServerError from '../../ServerError'
 
 class Monitor extends Component {
   constructor () {
@@ -12,7 +13,8 @@ class Monitor extends Component {
       comparitiveEnergyConsumption: '',
       activeStandbyPower: '',
       response: '',
-      loading: false
+      loading: false,
+      serverError: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -61,8 +63,8 @@ class Monitor extends Component {
           }
         })
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
+        this.setState({ serverError: true })
       })
   }
 
@@ -136,6 +138,8 @@ class Monitor extends Component {
 
     if (this.state.response) {
       content = <Response response={this.state.response} appliance='monitor' />
+    } else if (this.state.serverError) {
+      content = <ServerError />
     } else content = formContent
     return <div>{content}</div>
   }
