@@ -10,11 +10,9 @@ class Dryer extends Component {
     // order_of_training_data = ['Appliance Standard', 'Brand', 'Capacity', 'Combination', 'Control', 'Country', 'Depth','Height', 'Current Comparitive Energy Consumption', 'Program Name', 'Program Time', 'Type', 'Width']
     this.state = {
       applianceStandard: 'AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)',
-      brand: '',
       capacity: '',
       combination: true,
       control: 'Timer',
-      country: '',
       depth: '',
       height: '',
       comparitiveEnergyConsumption: '',
@@ -49,11 +47,9 @@ class Dryer extends Component {
     this.setState({ loading: true })
     const data = [
       this.state.applianceStandard,
-      this.state.brand,
       parseInt(this.state.capacity),
       JSON.parse(this.state.combination),
       this.state.control,
-      this.state.country,
       parseInt(this.state.depth),
       parseInt(this.state.height),
       parseInt(this.state.comparitiveEnergyConsumption),
@@ -87,9 +83,11 @@ class Dryer extends Component {
           response: {
             category: res.category,
             info: res.info,
-            inference: res.inference,
+            inference: res.text,
+            correlatedParameters: res.correlatedParameters,
             starRange: res.starRange,
-            links: res.links
+            links: res.links,
+            idealEnergy: res.idealEnergy
           }
         })
       })
@@ -132,18 +130,6 @@ class Dryer extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Brand</label>
-            <input
-              type='text'
-              className='form-control'
-              placeholder='Name of the Brand'
-              name='brand'
-              value={this.state.brand}
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <div className='form-group'>
             <label className='form-inline'>Capacity</label>
             <input
               type='number'
@@ -180,18 +166,6 @@ class Dryer extends Component {
               <option value='Autosensing'>Autosensing</option>
               <option value='Manual'>Manual</option>
             </select>
-          </div>
-
-          <div className='form-group'>
-            <label className='form-inline'>Country</label>
-            <input
-              type='text'
-              className='form-control'
-              placeholder='Country of manufacture'
-              name='country'
-              value={this.state.country}
-              onChange={this.handleChange}
-            />
           </div>
 
           <div className='form-group'>

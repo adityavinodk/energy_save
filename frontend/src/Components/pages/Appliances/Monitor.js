@@ -57,9 +57,11 @@ class Monitor extends Component {
           response: {
             category: res.category,
             info: res.info,
-            inference: res.inference,
+            inference: res.text,
+            correlatedParameters: res.correlatedParameters,
             starRange: res.starRange,
-            links: res.links
+            links: res.links,
+            idealEnergy: res.idealEnergy
           }
         })
       })

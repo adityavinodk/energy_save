@@ -9,6 +9,8 @@ The objective of this application is to help households in 2 main ways -
 2. Predict reasons for high energy consumption using the valuable insights provided 
 
 ## Starting App 
+Firstly, add `chromedriver` to your system path. This is needed to ensure complete advantage of the UI/UX we offer.
+
 Run the following in the root folder of the repository
 ```shell
 pip install -r requirements.txt
@@ -34,7 +36,6 @@ We have used Jupyter Notebook for visualization and making inferences of the dat
 ## OpenSource Contribution 
 We would like the developer community to contribute to this project - 
 - Add more useful datasets which provide a larger idea of the usage of the appliances at households.
-- Build a Neural Network model which provides feature extraction of each appliance.
 - Provide visualitzation of the inferences made on the website through charts and plots.
 
 Send Pull Requests and we shall review them!

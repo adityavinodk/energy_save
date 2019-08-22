@@ -10,14 +10,12 @@ class WashingMachine extends Component {
     // specifications = ['AS/NZS 2040.2:2005', 'WHIRLPOOL', 7, 150, 400, 100, True, 'Dual', 'India', True, 565, 'Non Drum', 850, 'No', 0.4, 'normal', 0.45, 'Drum', 600, 120]
     this.state = {
       applStandard: 'AS/NZS 2040.2:2005',
-      brand: '',
       cap: '',
       cecCold: '',
       cecWarm: '',
       coldWaterCons: '',
       combination: true,
       connMode: 'Dual',
-      country: '',
       delayStartMode: true,
       depth: '',
       detergentType: 'Non Drum',
@@ -56,14 +54,12 @@ class WashingMachine extends Component {
     this.setState({ loading: true })
     const data = [
       this.state.applStandard,
-      this.state.brand,
       parseInt(this.state.cap),
       parseInt(this.state.cecCold),
       parseInt(this.state.cecWarm),
       parseInt(this.state.coldWaterCons),
       this.state.combination,
       this.state.connMode,
-      this.state.country,
       this.state.delayStartMode,
       parseInt(this.state.depth),
       this.state.detergentType,
@@ -101,9 +97,11 @@ class WashingMachine extends Component {
           response: {
             category: res.category,
             info: res.info,
-            inference: res.inference,
+            inference: res.text,
+            correlatedParameters: res.correlatedParameters,
             starRange: res.starRange,
-            links: res.links
+            links: res.links,
+            idealEnergy: res.idealEnergy
           }
         })
       })
@@ -144,18 +142,6 @@ class WashingMachine extends Component {
                 Machines) Determination 2012
               </option>
             </select>
-          </div>
-
-          <div className='form-group'>
-            <label className='form-inline'>Brand</label>
-            <input
-              type='text'
-              className='form-control'
-              placeholder='Name of the Brand'
-              name='brand'
-              value={this.state.brand}
-              onChange={this.handleChange}
-            />
           </div>
 
           <div className='form-group'>
@@ -234,18 +220,6 @@ class WashingMachine extends Component {
               <option value='Dual'>Dual</option>
               <option value='Cold'>Cold</option>
             </select>
-          </div>
-
-          <div className='form-group'>
-            <label className='form-inline'>Country</label>
-            <input
-              type='text'
-              className='form-control'
-              placeholder='Country of Manufacture'
-              name='country'
-              value={this.state.country}
-              onChange={this.handleChange}
-            />
           </div>
 
           <div className='form-group'>

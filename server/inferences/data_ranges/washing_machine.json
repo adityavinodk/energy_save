@@ -1,0 +1,239 @@
+{
+    "CEC Cold": {
+        "0": [
+            0,
+            75
+        ],
+        "1": [
+            75,
+            125
+        ],
+        "2": [
+            125,
+            175
+        ],
+        "3": [
+            175,
+            800
+        ]
+    },
+    "CEC_": {
+        "0": [
+            149,
+            280
+        ],
+        "1": [
+            280,
+            400
+        ],
+        "2": [
+            400,
+            550
+        ],
+        "3": [
+            550,
+            1200
+        ]
+    },
+    "Cold Wat Cons": {
+        "0": [
+            0,
+            50
+        ],
+        "1": [
+            50,
+            80
+        ],
+        "2": [
+            80,
+            265
+        ]
+    },
+    "delayStartMode": {
+        "0": "False",
+        "1": "True"
+    },
+    "powerConsMode": {
+        "0": [
+            0,
+            0.4
+        ],
+        "1": [
+            0.4,
+            0.75
+        ],
+        "2": [
+            0.75,
+            1.4
+        ],
+        "3": [
+            1.4,
+            8
+        ]
+    },
+    "standbyPowerUsage": {
+        "0": [
+            0,
+            0.25
+        ],
+        "1": [
+            0.25,
+            0.5
+        ],
+        "2": [
+            0.5,
+            8
+        ]
+    },
+    "Conn_Mode": {
+        "0": "Dual",
+        "1": "Cold"
+    },
+    "Type": {
+        "0": "Drum",
+        "1": "Non-Drum"
+    },
+    "Cap": {
+        "0": [
+            2,
+            7
+        ],
+        "1": [
+            7,
+            8
+        ],
+        "2": [
+            8,
+            9
+        ],
+        "3": [
+            9,
+            20
+        ]
+    },
+    "Program Time": {
+        "0": [
+            20,
+            125
+        ],
+        "1": [
+            125,
+            250
+        ],
+        "2": [
+            250,
+            500
+        ]
+    },
+    "specifications_for_0": {
+        "Program Time": [
+            0,
+            1,
+            2
+        ],
+        "standbyPowerUsage": [
+            2,
+            0,
+            1
+        ],
+        "powerConsMode": [
+            2,
+            0,
+            1
+        ],
+        "Cap": [
+            0,
+            2,
+            1
+        ],
+        "CEC Cold": [
+            0,
+            1,
+            2
+        ],
+        "CEC_": [
+            3,
+            2,
+            1
+        ],
+        "Cold Wat Cons": [
+            2,
+            1,
+            0
+        ],
+        "Type": [
+            1
+        ],
+        "delayStartMode": [
+            1
+        ],
+        "Conn_Mode": [
+            0
+        ]
+    },
+    "specifications_for_1": {
+        "Program Time": [
+            1,
+            2
+        ],
+        "standbyPowerUsage": [
+            0,
+            1
+        ],
+        "powerConsMode": [
+            0,
+            1
+        ],
+        "Cap": [
+            3,
+            1
+        ],
+        "CEC Cold": [
+            0,
+            2
+        ],
+        "CEC_": [
+            2,
+            1
+        ],
+        "Cold Wat Cons": [
+            2,
+            1
+        ],
+        "delayStartMode": [
+            1
+        ]
+    },
+    "specifications_for_2": {
+        "Program Time": [
+            2
+        ],
+        "standbyPowerUsage": [
+            1
+        ],
+        "powerConsMode": [
+            0
+        ],
+        "Cap": [
+            2
+        ],
+        "CEC Cold": [
+            3
+        ],
+        "CEC_": [
+            1
+        ],
+        "Cold Wat Cons": [
+            1
+        ],
+        "Type": [
+            0
+        ],
+        "delayStartMode": [
+            1
+        ],
+        "Conn_Mode": [
+            1
+        ]
+    }
+}
