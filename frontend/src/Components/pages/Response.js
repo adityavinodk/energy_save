@@ -16,38 +16,77 @@ class Response extends Component {
   render () {
     const links = this.props.response.links
     const listItems = links.map(links => (
-      <li>
+      <li className='list-group-item'>
         <a href={links}>{links}</a>
       </li>
     ))
     return (
-      <div className='jumbotron row'>
-        <div className='col-4' />
-        <div className='col-4'>
-          <div id='category' className='h4'>
-            Category {this.props.response.category}
+      <div className='row container-fluid'>
+      <div className='col-3' />
+        <div className='card'>
+          <div id='header' className='card-header h2'>
+            Energy<label className='h1 text-success'>Save</label> Report
           </div>
-          <div id='star_range' className='h6'>
-            Range {this.props.response.starRange}
+          <div id='body' className='card-body'>
+            <div id='category' className='card-title h3'>
+              Category {this.props.response.category}
+            </div>
+            <div id='star_range' className='card-subtitle h5'>
+              Range {this.props.response.starRange}
+            </div>
+            <div id='info' className='lead mb-3'>
+              {this.props.response.info}
+            </div>
+            <div id='inference' className='font-italic mb-4 text-info'>
+              {this.props.response.inference}
+            </div>
+            <hr class='my-4' />
+            <table class='table'>
+              <thead class='thead-dark'>
+                <tr>
+                  <th scope='col'>#</th>
+                  <th scope='col'>First</th>
+                  <th scope='col'>Last</th>
+                  <th scope='col'>Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope='row'>1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope='row'>2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope='row'>3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+            <hr class='my-4' />
+            <div id='links'>
+              <label className='h4'>Helpful Links</label>
+              <ul className='list-group'>{listItems}</ul>
+            </div>
           </div>
-          <div id='info' className='lead mb-3'>
-            {this.props.response.info}
+          <div id='footer' className='card-footer'>
+            <button
+              className='btn btn-success'
+              onClick={() => {
+                window.location.href = this.props.appliance
+              }}
+            >
+              Fill Details Again
+            </button>
           </div>
-          <div id='inference' className='font-italic mb-4'>
-            {this.props.response.inference}
-          </div>
-          <div id='links'>
-            <label>Helpful Links</label>
-            <ul>{listItems}</ul>
-          </div>
-          <button
-            className='btn btn-success'
-            onClick={() => {
-              window.location.href = this.props.appliance
-            }}
-          >
-            Fill Details Again
-          </button>
         </div>
       </div>
     )
