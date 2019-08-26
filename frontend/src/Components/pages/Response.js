@@ -20,10 +20,19 @@ class Response extends Component {
         <a href={links}>{links}</a>
       </li>
     ))
+
+    const tableRows = Object.keys(this.props.response.correlatedParameters).map(
+      (appliance, index) => (
+        <tr>
+          <td>{appliance}</td>
+          <td>{this.props.response.correlatedParameters[appliance][0]}-{this.props.response.correlatedParameters[appliance][1]}</td>
+        </tr>
+      )
+    )
     return (
       <div className='row'>
         <div className='col-3' />
-        <div className='card col-6'>
+        <div className='card col-6 mx-0 px-0'>
           <div id='header' className='card-header h2'>
             Energy<label className='h1 text-success'>Save</label> Report
           </div>
@@ -49,18 +58,7 @@ class Response extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope='row'>1</th>
-                  <td>Mark</td>
-                </tr>
-                <tr>
-                  <th scope='row'>2</th>
-                  <td>Jacob</td>
-                </tr>
-                <tr>
-                  <th scope='row'>3</th>
-                  <td>Larry</td>
-                </tr>
+                {tableRows}
               </tbody>
             </table>
             <hr class='my-4' />
