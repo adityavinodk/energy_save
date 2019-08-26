@@ -66,18 +66,16 @@ class predictDryer():
         data['Prog Time'] = data['Prog Time'].astype(int)
 
         # Converting CEC into smaller integer classes using feature scaling
-        data['New CEC'] = data['New CEC'].astype(int)
-        cec_range = data['New CEC'].max() - data['New CEC'].min()
-        cec_mean = data['New CEC'].mean()
-        cec = (data.at[0, 'New CEC'] - cec_mean)/cec_range
-        if cec > -0.5 and cec <= -0.25: value = 0
-        elif cec > -0.25 and cec <= -0.175: value = 1
-        elif cec > -0.175 and cec <= -0.15: value = 2
-        elif cec > -0.15 and cec <= -0.05: value = 3
-        elif cec > -0.05 and cec <= 0: value = 4
-        elif cec > 0 and cec <= 0.15: value = 5
-        elif cec > 0.15 and cec <= 0.25: value = 6
-        elif cec > 0.25 and cec <= 0.5: value = 7
+        cec = data.at[0, 'New CEC']
+        if cec > 21.89 and cec <= 130.14: value = 0
+        elif cec > 130.14 and cec <= 162.61: value = 1
+        elif cec > 162.61 and cec <= 173.44: value = 2
+        elif cec > 173.44 and cec <= 216.74: value = 3
+        elif cec > 216.74 and cec <= 238.39: value = 4
+        elif cec > 238.39 and cec <= 303.34: value = 5
+        elif cec > 303.34 and cec <= 346.64: value = 6
+        elif cec > 346.64 and cec <= 454.89: value = 7
+        else: value = 8
         data.at[0, 'New CEC'] = value
 
         # We shall extract the features fro the Program Name and seperate them into different classes

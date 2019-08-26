@@ -1,8 +1,8 @@
 {
     "Screen Technology": {
-        "0": "LED",
-        "1": "LCD",
-        "2": "OLED"
+        "0": ["LED"],
+        "1": ["LCD"],
+        "2": ["OLED"]
     },
     "Comparative Energy Consumption": {
         "0": [

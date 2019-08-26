@@ -50,8 +50,8 @@
         ]
     },
     "delayStartMode": {
-        "0": "False",
-        "1": "True"
+        "0": ["False"],
+        "1": ["True"]
     },
     "powerConsMode": {
         "0": [
@@ -86,12 +86,12 @@
         ]
     },
     "Conn_Mode": {
-        "0": "Dual",
-        "1": "Cold"
+        "0": ["Dual"],
+        "1": ["Cold"]
     },
     "Type": {
-        "0": "Drum",
-        "1": "Non-Drum"
+        "0": ["Drum"],
+        "1": ["Non-Drum"]
     },
     "Cap": {
         "0": [
@@ -149,7 +149,7 @@
         "CEC Cold": [
             0,
             1,
-            2
+            3
         ],
         "CEC_": [
             3,
@@ -190,15 +190,15 @@
         ],
         "CEC Cold": [
             0,
-            2
+            1
         ],
         "CEC_": [
             2,
             1
         ],
         "Cold Wat Cons": [
-            2,
-            1
+            1,
+            2
         ],
         "delayStartMode": [
             1
@@ -218,7 +218,7 @@
             2
         ],
         "CEC Cold": [
-            3
+            2
         ],
         "CEC_": [
             1

@@ -116,8 +116,6 @@ class Monitor extends Component {
               name='activeStandbyPower'
               value={this.state.activeStandbyPower}
               onChange={this.handleChange}
-              min='0'
-              max='11'
               required
             />
           </div>

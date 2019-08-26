@@ -86,12 +86,12 @@
         ]
     },
     "Combination": {
-        "0": "False",
-        "1": "True"
+        "0": ["False"],
+        "1": ["True"]
     },
     "Type": {
-        "0": "Condensor",
-        "1": "Vented"
+        "0": ["Condensor"],
+        "1": ["Vented"]
     },
     "specifications_for_0": {
         "New CEC": [

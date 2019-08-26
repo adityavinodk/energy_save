@@ -8,12 +8,14 @@ def createInference(category, inferences):
     # Creates Inference in the form of a text, according to the categories and issues
     information = ''
     if category == 0:
-        information += 'Currently we see issues with ' + \
-            ', '.join(inferences.keys())+'. These features are the ones consuming a lot of power in the appliance. ' + \
+        if inferences!={}: information += 'Currently we see issues with ' + \
+            ', '.join(inferences.keys())+'.'
+        information+=' These features are the ones consuming a lot of power in the appliance. ' + \
                 'We suggest you service your appliance as soon as possible or if possible, change your appliance and buy one which contains a Energy Star Rating.'
     elif category == 1:
-        information += 'Although not major, we see certain issues with ' + \
-            ', '.join(inferences.keys())+'. We suggest you keep checking for the health and regularly service your appliance.'
+        if inferences!={}: information += 'Although not major, we see certain issues with ' + \
+            ', '.join(inferences.keys())+'.'
+        information+= ' We suggest you keep checking for the health and regularly service your appliance.'
     else:
         information += 'Everything looks great! We don\'t see any issues at the moment?'
     return information

@@ -2,11 +2,9 @@ Dryer API -
 {
     "specifications": [
         "AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)",
-        "ASKO",
         8,
         false,
         "Timer",
-        "Slovenia",
         800,
         650,
         200,
@@ -30,14 +28,12 @@ Washing Machine API -
 {
 	"specifications" : [
 		"AS/NZS 2040.2:2005",
-		"WHIRLPOOL",
 		2,
 		300,
 		500,
 		400,
 		true,
 		"Cold",
-		"India",
 		false,
 		565,
 		"Drum",

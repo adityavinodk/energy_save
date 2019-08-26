@@ -22,10 +22,10 @@ class Response extends Component {
     ))
 
     const tableRows = Object.keys(this.props.response.correlatedParameters).map(
-      (appliance, index) => (
+      (parameter, index) => (
         <tr>
-          <td>{appliance}</td>
-          <td>{this.props.response.correlatedParameters[appliance][0]}-{this.props.response.correlatedParameters[appliance][1]}</td>
+          <td>{parameter}</td>
+          <td>{this.props.response.correlatedParameters[parameter].join()}</td>
         </tr>
       )
     )
