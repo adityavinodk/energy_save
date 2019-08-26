@@ -21,7 +21,8 @@ class Home extends Component {
       <div className='container'>
         <div className='container-fluid'>
           <div className='h4 text-justify'>
-            <label className='text-success'>EnergySave</label> helps to find the
+            <label className='h2'>Energy</label>
+            <label className='h1 text-success'>Save</label> helps to find the
             areas of high energy consumption in households based on predicting
             the health of the appliances
           </div>

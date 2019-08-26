@@ -21,9 +21,9 @@ class Response extends Component {
       </li>
     ))
     return (
-      <div className='row container-fluid'>
-      <div className='col-3' />
-        <div className='card'>
+      <div className='row'>
+        <div className='col-3' />
+        <div className='card col-6'>
           <div id='header' className='card-header h2'>
             Energy<label className='h1 text-success'>Save</label> Report
           </div>
@@ -44,30 +44,22 @@ class Response extends Component {
             <table class='table'>
               <thead class='thead-dark'>
                 <tr>
-                  <th scope='col'>#</th>
-                  <th scope='col'>First</th>
-                  <th scope='col'>Last</th>
-                  <th scope='col'>Handle</th>
+                  <th scope='col'>Parameter</th>
+                  <th scope='col'>Range</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope='row'>1</th>
                   <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
                 </tr>
                 <tr>
                   <th scope='row'>2</th>
                   <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
                 </tr>
                 <tr>
                   <th scope='row'>3</th>
                   <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
                 </tr>
               </tbody>
             </table>
