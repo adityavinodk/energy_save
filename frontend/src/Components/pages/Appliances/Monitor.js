@@ -24,6 +24,7 @@ class Monitor extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
   submitForm (e) {
+    e.preventDefault();
     this.setState({ loading: true })
     const data = [
       this.state.screenTechnology,
