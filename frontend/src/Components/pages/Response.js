@@ -25,10 +25,7 @@ class Response extends Component {
       (appliance, index) => (
         <tr>
           <td>{appliance}</td>
-          <td>
-            {this.props.response.correlatedParameters[appliance][0]}-
-            {this.props.response.correlatedParameters[appliance][1]}
-          </td>
+          <td>{this.props.response.correlatedParameters[appliance][0]}-{this.props.response.correlatedParameters[appliance][1]}</td>
         </tr>
       )
     )
@@ -52,23 +49,18 @@ class Response extends Component {
             <div id='inference' className='font-italic mb-4 text-info'>
               {this.props.response.inference}
             </div>
-
-            {Object.keys(this.props.response.correlatedParameters).length !==
-            0 ? (
-              <React.Fragment>
-                  <hr class='my-4' />
-                  <table class='table'>
-                    <thead class='thead-dark'>
-                        <tr>
-                        <th scope='col'>Parameter</th>
-                        <th scope='col'>Range</th>
-                      </tr>
-                      </thead>
-                    <tbody>{tableRows}</tbody>
-                  </table>
-                </React.Fragment>
-              ) : null}
-
+            <hr class='my-4' />
+            <table class='table'>
+              <thead class='thead-dark'>
+                <tr>
+                  <th scope='col'>Parameter</th>
+                  <th scope='col'>Range</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tableRows}
+              </tbody>
+            </table>
             <hr class='my-4' />
             <div id='links'>
               <label className='h4'>Helpful Links</label>

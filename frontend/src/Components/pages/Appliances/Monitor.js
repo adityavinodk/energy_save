@@ -24,19 +24,21 @@ class Monitor extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
   submitForm (e) {
+    e.preventDefault()
     this.setState({ loading: true })
     const data = [
       this.state.screenTechnology,
       parseInt(this.state.comparitiveEnergyConsumption),
       parseFloat(this.state.activeStandbyPower)
     ]
-    // if (data.includes(NaN) || data.includes('')) {
-    //   alert('Fill all Fields')
-    //   this.setState({
-    //     loading: false
-    //   })
-    //   return
-    // }
+    if (data.includes(NaN) || data.includes('')) {
+      alert('Fill all Fields')
+      this.setState({
+        loading: false
+      })
+      return
+    }
+    // console.log(data);
     fetch('/api/predict/monitor', {
       method: 'POST',
       mode: 'cors',
@@ -91,57 +93,47 @@ class Monitor extends Component {
           </div>
 
           <div className='form-group'>
-            <label for='comparitiveEnergyConsumption' className='form-inline'>
+            <label className='form-inline'>
               Current Comparitive Energy Consumption
             </label>
             <input
-              type='number'
-              id='comparitiveEnergyConsumption'
+              type='text'
               className='form-control'
               placeholder='Comparative Energy Consumption expressed as kilowatt hours per years'
               name='comparitiveEnergyConsumption'
               value={this.state.comparitiveEnergyConsumption}
               onChange={this.handleChange}
-              required
             />
           </div>
 
           <div className='form-group'>
-            <label for='activeStandbyPower' className='form-inline'>
-              Active Standby Power
-            </label>
+            <label className='form-inline'>Active Standby Power</label>
             <input
               type='number'
-              id='activeStandbyPower'
               className='form-control'
               placeholder='Amount of energy used by the monitor in Active Standby Mode in watts'
               name='activeStandbyPower'
               value={this.state.activeStandbyPower}
               onChange={this.handleChange}
-              min='0'
-              max='10'
-              required
             />
           </div>
-          <div className='form-group'>
-            <input
-              type='submit'
-              className='submit btn btn-success'
-              onClick={this.submitForm}
-              disabled={this.state.loading}
-            >
-              {!this.state.loading ? 'Find Star Rating' : 'Submitting...'}
-            </input>
-            <button
-              type='reset'
-              className='form-group btn btn-info ml-3'
-              onClick={() => {
-                window.location.href = '/'
-              }}
-            >
-              Back to Home
-            </button>
-          </div>
+          <button
+            type='submit'
+            className='form-group btn btn-success'
+            onClick={this.submitForm}
+            disabled={this.state.loading}
+          >
+            {!this.state.loading ? 'Find Star Rating' : 'Submitting...'}
+          </button>
+          <button
+            type='reset'
+            className='form-group btn btn-info ml-3'
+            onClick={() => {
+              window.location.href = '/'
+            }}
+          >
+            Back to Home
+          </button>
         </form>
       </div>
     )
