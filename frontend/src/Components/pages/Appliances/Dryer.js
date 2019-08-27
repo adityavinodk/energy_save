@@ -58,13 +58,7 @@ class Dryer extends Component {
       this.state.type,
       parseInt(this.state.width)
     ]
-    if (data.includes(NaN) || data.includes('')) {
-      alert('Fill all Fields')
-      this.setState({
-        loading: false
-      })
-      return
-    }
+
     fetch('/api/predict/dryer', {
       method: 'POST',
       mode: 'cors',
@@ -103,7 +97,7 @@ class Dryer extends Component {
         <div className='container-fluid mb-5 display-4'>
           Tell us about your Dryer
         </div>
-        <form className='container w-50'>
+        <form className='container w-50' onSubmit={this.submitForm}>
           <div className='form-group'>
             <label className='form-inline'>Appliance Standard</label>
             <select
@@ -130,24 +124,28 @@ class Dryer extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Capacity</label>
+            <label for='capacity' className='form-inline'>Capacity</label>
             <input
               type='number'
+              id='capacity'
               className='form-control'
               placeholder='Enter value in kg'
               name='capacity'
               value={this.state.capacity}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Combination - washer+dryer?</label>
+            <label for='combination' className='form-inline'>Combination - washer+dryer?</label>
             <select
               className='form-control'
+              id='combination'
               name='combination'
               value={this.state.combination}
               onChange={this.handleChange}
+              required
             >
               <option value='true'>True</option>
               <option value='false'>False</option>
@@ -169,76 +167,88 @@ class Dryer extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Depth</label>
+            <label for='depth' className='form-inline'>Depth</label>
             <input
               type='number'
+              id='depth'
               className='form-control'
               placeholder='Depth in mm'
               name='depth'
               value={this.state.depth}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Height</label>
+            <label for='height' className='form-inline'>Height</label>
             <input
               type='number'
+              id='height'
               className='form-control'
               placeholder='Height in mm'
               name='height'
               value={this.state.height}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Width</label>
+            <label for='width' className='form-inline'>Width</label>
             <input
               type='number'
+              id='width'
               className='form-control'
               placeholder='Width in mm'
               name='width'
               value={this.state.width}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>
+            <label for='comparitiveEnergyConsumption' className='form-inline'>
               Current Comparitive Energy Consumption
             </label>
             <input
               type='number'
+              id='comparitiveEnergyConsumption'
               className='form-control'
               placeholder='Energy Consumption of the product expressed as kilowatt hours per years'
               name='comparitiveEnergyConsumption'
               value={this.state.comparitiveEnergyConsumption}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Program Name</label>
+            <label for='programName' className='form-inline'>Program Name</label>
             <input
               type='text'
+              id='programName'
               className='form-control'
               placeholder='Program run like heat/dry'
               name='programName'
               value={this.state.programName}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Program Time</label>
+            <label for='programTime' className='form-inline'>Program Time</label>
             <input
               type='number'
+              id='programTime'
               className='form-control'
               placeholder='Program time in minutes'
               name='programTime'
               value={this.state.programTime}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -257,7 +267,6 @@ class Dryer extends Component {
           <button
             type='submit'
             className='btn btn-success'
-            onClick={this.submitForm}
             disabled={this.state.loading}
           >
             {!this.state.loading ? 'Find Star Rating' : 'Submitting...'}

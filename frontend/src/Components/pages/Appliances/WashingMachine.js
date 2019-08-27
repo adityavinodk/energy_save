@@ -72,13 +72,7 @@ class WashingMachine extends Component {
       parseInt(this.state.width),
       parseInt(this.state.progTime)
     ]
-    if (data.includes(NaN) || data.includes('')) {
-      alert('Fill all Fields')
-      this.setState({
-        loading: false
-      })
-      return
-    }
+
     fetch('/api/predict/washing_machine', {
       method: 'POST',
       mode: 'cors',
@@ -117,7 +111,7 @@ class WashingMachine extends Component {
         <div className='container-fluid mb-5 display-4'>
           Tell us about your Washing Machine
         </div>
-        <form className='container w-50'>
+        <form className='container w-50' onSubmit={this.submitForm}>
           <div className='form-group'>
             <label className='form-inline'>Appliance Standard</label>
             <select
@@ -145,54 +139,62 @@ class WashingMachine extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Capacity</label>
+            <label for='cap' className='form-inline'>Capacity</label>
             <input
               type='number'
+              id='cap'
               className='form-control'
               placeholder='Enter value in kg'
               name='cap'
               value={this.state.cap}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>
+            <label for='cecCold' className='form-inline'>
               Current Comparitive Energy Consumption for Cold Use
             </label>
             <input
               type='number'
+              id='cecCold'
               className='form-control'
               placeholder='Energy Consumption of the product expressed as kilowatt hours per years'
               name='cecCold'
               value={this.state.cecCold}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>
+            <label for='cecWarm' className='form-inline'>
               Current Comparitive Energy Consumption for Warm Use
             </label>
             <input
               type='number'
+              id='cecWarm'
               className='form-control'
               placeholder='Energy Consumption of the product expressed as kilowatt hours per years'
               name='cecWarm'
               value={this.state.cecWarm}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Cold Water Consumption</label>
+            <label for='coldWaterCons' className='form-inline'>Cold Water Consumption</label>
             <input
               type='number'
+              id='coldWaterCons'
               className='form-control'
               placeholder='Average cold water consumption in whole litres'
               name='coldWaterCons'
               value={this.state.coldWaterCons}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -236,14 +238,16 @@ class WashingMachine extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Depth</label>
+            <label for='depth' className='form-inline'>Depth</label>
             <input
               type='number'
+              id='depth'
               className='form-control'
               placeholder='Depth in mm'
               name='depth'
               value={this.state.depth}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -261,14 +265,16 @@ class WashingMachine extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Height</label>
+            <label for='height' className='form-inline'>Height</label>
             <input
               type='number'
+              id='height'
               className='form-control'
               placeholder='Height in mm'
               name='height'
               value={this.state.height}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -286,38 +292,44 @@ class WashingMachine extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Power Consumption in Mode</label>
+            <label for='powerConsMode' className='form-inline'>Power Consumption in Mode</label>
             <input
               type='number'
+              id='powerConsMode'
               className='form-control'
               placeholder='Enter value in watts'
               name='powerConsMode'
               value={this.state.powerConsMode}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Program Name</label>
+            <label for='progName' className='form-inline'>Program Name</label>
             <input
               type='text'
+              id='progName'
               className='form-control'
               placeholder='Name of the Program - normal/cotton etc'
               name='progName'
               value={this.state.progName}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Standby Power Usage</label>
+            <label for='standbyPowerUsage' className='form-inline'>Standby Power Usage</label>
             <input
               type='number'
+              id='standbyPowerUsage'
               className='form-control'
               placeholder='Enter value in watts'
               name='standbyPowerUsage'
               value={this.state.standbyPowerUsage}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -335,33 +347,36 @@ class WashingMachine extends Component {
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Width</label>
+            <label for='width' className='form-inline'>Width</label>
             <input
               type='number'
+              id='width'
               className='form-control'
               placeholder='Width in mm'
               name='width'
               value={this.state.width}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <div className='form-group'>
-            <label className='form-inline'>Program Time</label>
+            <label for='progTime' className='form-inline'>Program Time</label>
             <input
               type='number'
+              id='progTime'
               className='form-control'
               placeholder='Enter time in minutes'
               name='progTime'
               value={this.state.progTime}
               onChange={this.handleChange}
+              required
             />
           </div>
 
           <button
             type='submit'
             className='form-group btn btn-success'
-            onClick={this.submitForm}
             disabled={this.state.loading}
           >
             {!this.state.loading ? 'Find Star Rating' : 'Submitting...'}
