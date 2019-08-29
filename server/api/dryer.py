@@ -57,7 +57,7 @@ class predictDryer():
         inferences = {}
         file = open(self.data_info_path, 'r')
         full_data = json.load(file)
-        featureNames = {'New CEC':'Comparative Energy Consumption', 'Prog Time':'Usage Time', 'Type':'Type of appliance', 'Combination': 'Multi-Purpose Appliance'}
+        featureNames = {'New CEC':'Comparative Energy Consumption', 'Prog Time':'Usage Time', 'Type':'Type of appliance'}
         if category==0: 
             starRange = "Less than or equal to 4 stars on 10"
             for problemFeature in full_data['specifications_for_0']:

@@ -13,7 +13,6 @@ class WashingMachine extends Component {
       cecWarm: '',
       connMode: 'Dual',
       delayStartMode: true,
-      detergentType: 'Non Drum',
       internalHeater: 'Yes',
       standbyPowerUsage: '',
       type: 'Drum',
@@ -48,7 +47,6 @@ class WashingMachine extends Component {
       parseInt(this.state.cecWarm),
       this.state.connMode,
       this.state.delayStartMode,
-      this.state.detergentType,
       this.state.internalHeater,
       parseFloat(this.state.standbyPowerUsage),
       this.state.type,
@@ -147,19 +145,6 @@ class WashingMachine extends Component {
             >
               <option value='true'>True</option>
               <option value='false'>False</option>
-            </select>
-          </div>
-
-          <div className='form-group'>
-            <label className='form-inline'>Detergent Type</label>
-            <select
-              className='form-control'
-              name='detergentType'
-              value={this.state.detergentType}
-              onChange={this.handleChange}
-            >
-              <option value='Non Drum'>Non Drum</option>
-              <option value='Drum'>Drum</option>
             </select>
           </div>
 

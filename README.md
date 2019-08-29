@@ -23,7 +23,7 @@ python app.py
 Then open `localhost:5000` your browser to start the application. Test the API's using the inputs from `sample_inputs.txt` file.
 
 ## About the Project
-We have used Jupyter Notebook for visualization and making inferences of the data. We are running the web application using Flask server and using React for the front-end of the application. We have REST API calls to all the predictions are made currently using linear classifier models and average around 85% accuracy. 
+We have used Jupyter Notebook for visualization and making inferences of the data. We are running the web application using Flask server and using React for the front-end of the application. We have REST API calls to all the predictions are made currently using simple supervised learning classifier models and average around 85% accuracy. 
 - `datasets` folder consists of all the datasets along with their label files
 - `data_infereces` folder consists of Jupyter files containing the prediction as well as the different inferences made based on the data from the datasets
 - `frontend` folder consists the source files of the front-end of the web application

@@ -138,10 +138,19 @@
         ]
     },
     "specifications_for_0": {
+        "Cap": [
+            0
+        ],
         "CEC_": [
             3
         ],
-        "DetergentType": [
+        "Conn_Mode": [
+            0
+        ],
+        "delayStartMode": [
+            1
+        ],
+        "internal_heater": [
             1
         ],
         "Type": [
@@ -152,10 +161,19 @@
         ]
     },
     "specifications_for_1": {
+        "Cap": [
+            3
+        ],
         "CEC_": [
             2
         ],
-        "DetergentType": [
+        "Conn_Mode": [
+            0
+        ],
+        "delayStartMode": [
+            1
+        ],
+        "internal_heater": [
             0
         ],
         "Type": [
@@ -166,10 +184,19 @@
         ]
     },
     "specifications_for_2": {
+        "Cap": [
+            2
+        ],
         "CEC_": [
             1
         ],
-        "DetergentType": [
+        "Conn_Mode": [
+            1
+        ],
+        "delayStartMode": [
+            1
+        ],
+        "internal_heater": [
             0
         ],
         "Type": [

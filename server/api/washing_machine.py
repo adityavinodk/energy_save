@@ -10,7 +10,7 @@ class predictWashingMachine():
         self.specifications = specifications
         self.weights_path = weights_path
         self.data_info_path = data_info_path
-        self.features = ['Cap', 'CEC_', 'Conn_Mode', 'delayStartMode', 'DetergentType', 'internal_heater', 'standbyPowerUsage', 'Type', 'Program Time']
+        self.features = ['Cap', 'CEC_', 'Conn_Mode', 'delayStartMode', 'internal_heater', 'standbyPowerUsage', 'Type', 'Program Time']
         
     def predict(self):
         # Kindly refer ../../inferences/washing_machine.ipynb for the logic of the following code
@@ -31,13 +31,6 @@ class predictWashingMachine():
         else: 
             data.at[0, 'delayStartMode'] = 1
         data['delayStartMode'] = data['delayStartMode'].astype(int)
-
-        # Classify detergentType value
-        if data.at[0, 'DetergentType'] == 'Drum':
-            value = 0
-        else: value = 1
-        data.at[0, 'DetergentType'] = value
-        data.DetergentType = data.DetergentType.astype(int)
 
         # Classify internal_heater value
         if data.at[0, 'internal_heater']=='Yes on the warm wash program only':

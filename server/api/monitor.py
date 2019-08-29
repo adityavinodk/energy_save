@@ -56,7 +56,7 @@ class predictMonitor():
         inferences = {}
         file = open(self.data_info_path, 'r')
         full_data = json.load(file)
-        featureNames = {'Screen Technology': 'Technology running the screen', 'Comparative Energy Consumption': 'Comparative Energy Consumption', 'Active Standby Power': 'Power used in Standby Mode'}
+        featureNames = {'Comparative Energy Consumption': 'Comparative Energy Consumption', 'Active Standby Power': 'Power used in Standby Mode'}
         if category==0: 
             starRange = "Less than or equal to 4 stars on 10"
             for problemFeature in full_data['specifications_for_0']:
