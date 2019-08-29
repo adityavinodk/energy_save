@@ -50,8 +50,12 @@
         ]
     },
     "delayStartMode": {
-        "0": ["False"],
-        "1": ["True"]
+        "0": [
+            "False"
+        ],
+        "1": [
+            "True"
+        ]
     },
     "powerConsMode": {
         "0": [
@@ -86,12 +90,20 @@
         ]
     },
     "Conn_Mode": {
-        "0": ["Dual"],
-        "1": ["Cold"]
+        "0": [
+            "Dual"
+        ],
+        "1": [
+            "Cold"
+        ]
     },
     "Type": {
-        "0": ["Drum"],
-        "1": ["Non-Drum"]
+        "0": [
+            "Drum"
+        ],
+        "1": [
+            "Non-Drum"
+        ]
     },
     "Cap": {
         "0": [
@@ -126,114 +138,45 @@
         ]
     },
     "specifications_for_0": {
-        "Program Time": [
-            0,
-            1,
-            2
-        ],
-        "standbyPowerUsage": [
-            2,
-            0,
-            1
-        ],
-        "powerConsMode": [
-            2,
-            0,
-            1
-        ],
-        "Cap": [
-            0,
-            2,
-            1
-        ],
-        "CEC Cold": [
-            0,
-            1,
+        "CEC_": [
             3
         ],
-        "CEC_": [
-            3,
-            2,
+        "DetergentType": [
             1
-        ],
-        "Cold Wat Cons": [
-            2,
-            1,
-            0
         ],
         "Type": [
             1
         ],
-        "delayStartMode": [
-            1
-        ],
-        "Conn_Mode": [
+        "Program Time": [
             0
         ]
     },
     "specifications_for_1": {
-        "Program Time": [
-            1,
-            2
-        ],
-        "standbyPowerUsage": [
-            0,
-            1
-        ],
-        "powerConsMode": [
-            0,
-            1
-        ],
-        "Cap": [
-            3,
-            1
-        ],
-        "CEC Cold": [
-            0,
-            1
-        ],
         "CEC_": [
-            2,
-            1
-        ],
-        "Cold Wat Cons": [
-            1,
             2
         ],
-        "delayStartMode": [
-            1
-        ]
-    },
-    "specifications_for_2": {
-        "Program Time": [
-            2
-        ],
-        "standbyPowerUsage": [
-            1
-        ],
-        "powerConsMode": [
+        "DetergentType": [
             0
-        ],
-        "Cap": [
-            2
-        ],
-        "CEC Cold": [
-            2
-        ],
-        "CEC_": [
-            1
-        ],
-        "Cold Wat Cons": [
-            1
         ],
         "Type": [
             0
         ],
-        "delayStartMode": [
+        "Program Time": [
+            1
+        ]
+    },
+    "specifications_for_2": {
+        "CEC_": [
             1
         ],
-        "Conn_Mode": [
-            1
+        "DetergentType": [
+            0
+        ],
+        "Type": [
+            0
+        ],
+        "Program Time": [
+            2
         ]
     }
 }

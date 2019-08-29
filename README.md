@@ -35,7 +35,8 @@ We have used Jupyter Notebook for visualization and making inferences of the dat
 
 ## OpenSource Contribution 
 We would like the developer community to contribute to this project - 
-- Add more useful datasets which provide a larger idea of the usage of the appliances at households.
+- Move to real-time data prediction, which will be easier to scale in the future
+- Add more useful datasets which provide a larger idea of the usage of the appliances at households like seasonal data.
 - Provide visualitzation of the inferences made on the website through charts and plots.
 
 Send Pull Requests and we shall review them!

@@ -53,23 +53,23 @@
     },
     "New CEC": {
         "0": [
-            22,
+            21,
             130
         ],
         "1": [
             130,
-            163
+            162
         ],
         "2": [
-            163,
+            162,
             173
         ],
         "3": [
             173,
-            217
+            216
         ],
         "4": [
-            217,
+            216,
             238
         ],
         "5": [
@@ -78,75 +78,59 @@
         ],
         "6": [
             303,
-            347
+            346
         ],
         "7": [
-            347,
-            455
+            346,
+            454
         ]
     },
     "Combination": {
-        "0": ["False"],
-        "1": ["True"]
+        "0": [
+            "False"
+        ],
+        "1": [
+            "True"
+        ]
     },
     "Type": {
-        "0": ["Condensor"],
-        "1": ["Vented"]
+        "0": [
+            "Condensor"
+        ],
+        "1": [
+            "Vented"
+        ]
     },
     "specifications_for_0": {
         "New CEC": [
-            7,
-            6,
-            5
+            7
         ],
         "Prog Time": [
-            0,
-            5,
-            1
+            0
         ],
         "Type": [
             1
-        ],
-        "Cap": [
-            1,
-            2,
-            0
-        ],
-        "Combination": [
-            0
         ]
     },
     "specifications_for_1": {
         "New CEC": [
-            5,
-            6
+            5
         ],
         "Prog Time": [
-            3,
-            4
+            3
         ],
-        "Cap": [
-            1,
-            0
+        "Type": [
+            1
         ]
     },
     "specifications_for_2": {
         "New CEC": [
-            1,
-            0
+            1
         ],
         "Prog Time": [
-            7,
-            6
+            7
         ],
         "Type": [
-            0
-        ],
-        "Cap": [
-            1,
-            0
-        ],
-        "Combination": [
             0
         ]
     }

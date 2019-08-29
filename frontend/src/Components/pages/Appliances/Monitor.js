@@ -109,7 +109,7 @@ class Monitor extends Component {
               Active Standby Power
             </label>
             <input
-              type='number'
+              type='text'
               id='activeStandbyPower'
               className='form-control'
               placeholder='Amount of energy used by the monitor in Active Standby Mode in watts'

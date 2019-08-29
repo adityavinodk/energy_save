@@ -1,8 +1,14 @@
 {
     "Screen Technology": {
-        "0": ["LED"],
-        "1": ["LCD"],
-        "2": ["OLED"]
+        "0": [
+            "LED"
+        ],
+        "1": [
+            "LCD"
+        ],
+        "2": [
+            "OLED"
+        ]
     },
     "Comparative Energy Consumption": {
         "0": [
@@ -81,39 +87,27 @@
         ]
     },
     "specifications_for_0": {
-        "Screen Technology": [
-            0,
-            1
-        ],
         "Comparative Energy Consumption": [
-            9,
-            10,
-            11
+            9
         ],
         "Active Standby Power": [
-            5,
-            4,
-            2
+            5
         ]
     },
     "specifications_for_1": {
         "Comparative Energy Consumption": [
-            5,
-            4
+            5
         ],
         "Active Standby Power": [
-            0,
-            2
+            0
         ]
     },
     "specifications_for_2": {
         "Comparative Energy Consumption": [
-            0,
-            1
+            0
         ],
         "Active Standby Power": [
-            1,
-            0
+            1
         ]
     }
 }

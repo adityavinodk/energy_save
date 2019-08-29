@@ -9,23 +9,14 @@ class WashingMachine extends Component {
     // order_of_training_data = ['ApplStandard', 'Brand', 'Cap', 'CEC Cold', 'CEC_', 'Cold Water Cons', 'Combination', 'Conn_Mode', 'Country', 'delayStartMode', 'Depth', 'DetergentType', 'Height', 'internal_heater', 'powerConsMode', 'Prog Name', 'standbyPowerUsage', 'Type', 'Width', 'Program Time']    // specifications = ['AS/NZS 2040.2:2005', 'WHIRLPOOL', 7, 150, 400, 100, True, 'Dual', 'India', True, 565, 'Non Drum', 850, 'No', 0.4, 'normal', 0.45, 'Drum', 600, 120]
     // specifications = ['AS/NZS 2040.2:2005', 'WHIRLPOOL', 7, 150, 400, 100, True, 'Dual', 'India', True, 565, 'Non Drum', 850, 'No', 0.4, 'normal', 0.45, 'Drum', 600, 120]
     this.state = {
-      applStandard: 'AS/NZS 2040.2:2005',
       cap: '',
-      cecCold: '',
       cecWarm: '',
-      coldWaterCons: '',
-      combination: true,
       connMode: 'Dual',
       delayStartMode: true,
-      depth: '',
       detergentType: 'Non Drum',
-      height: '',
       internalHeater: 'Yes',
-      powerConsMode: '',
-      progName: '',
       standbyPowerUsage: '',
       type: 'Drum',
-      width: '',
       progTime: '',
       response: '',
       loading: false,
@@ -53,23 +44,14 @@ class WashingMachine extends Component {
     e.preventDefault()
     this.setState({ loading: true })
     const data = [
-      this.state.applStandard,
       parseInt(this.state.cap),
-      parseInt(this.state.cecCold),
       parseInt(this.state.cecWarm),
-      parseInt(this.state.coldWaterCons),
-      this.state.combination,
       this.state.connMode,
       this.state.delayStartMode,
-      parseInt(this.state.depth),
       this.state.detergentType,
-      parseInt(this.state.height),
       this.state.internalHeater,
-      parseFloat(this.state.powerConsMode),
-      this.state.progName,
       parseFloat(this.state.standbyPowerUsage),
       this.state.type,
-      parseInt(this.state.width),
       parseInt(this.state.progTime)
     ]
 
@@ -113,32 +95,6 @@ class WashingMachine extends Component {
         </div>
         <form className='container w-50' onSubmit={this.submitForm}>
           <div className='form-group'>
-            <label className='form-inline'>Appliance Standard</label>
-            <select
-              className='form-control'
-              name='applStandard'
-              value={this.state.applStandard}
-              onChange={this.handleChange}
-            >
-              <option value='AS/NZS 2040.2:2005'>AS/NZS 2040.2:2005</option>
-              <option value='AS/NZS 2040.2:2005 (Legacy)'>
-                AS/NZS 2040.2:2005 (Legacy)
-              </option>
-              <option value='AS/NZS 2040.2:2000 (Legacy)'>
-                AS/NZS 2040.2:2000 (Legacy)
-              </option>
-              <option value='Greenhouse and Energy Minimum Standards (Clothes Washing Machines) Determination 2015'>
-                Greenhouse and Energy Minimum Standards (Clothes Washing
-                Machines) Determination 2015
-              </option>
-              <option value='Greenhouse and Energy Minimum Standards (Clothes Washing Machines) Determination 2012'>
-                Greenhouse and Energy Minimum Standards (Clothes Washing
-                Machines) Determination 2012
-              </option>
-            </select>
-          </div>
-
-          <div className='form-group'>
             <label for='cap' className='form-inline'>Capacity</label>
             <input
               type='number'
@@ -147,22 +103,6 @@ class WashingMachine extends Component {
               placeholder='Enter value in kg'
               name='cap'
               value={this.state.cap}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label for='cecCold' className='form-inline'>
-              Current Comparitive Energy Consumption for Cold Use
-            </label>
-            <input
-              type='number'
-              id='cecCold'
-              className='form-control'
-              placeholder='Energy Consumption of the product expressed as kilowatt hours per years'
-              name='cecCold'
-              value={this.state.cecCold}
               onChange={this.handleChange}
               required
             />
@@ -182,33 +122,6 @@ class WashingMachine extends Component {
               onChange={this.handleChange}
               required
             />
-          </div>
-
-          <div className='form-group'>
-            <label for='coldWaterCons' className='form-inline'>Cold Water Consumption</label>
-            <input
-              type='number'
-              id='coldWaterCons'
-              className='form-control'
-              placeholder='Average cold water consumption in whole litres'
-              name='coldWaterCons'
-              value={this.state.coldWaterCons}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label className='form-inline'>Combination - washer+dryer?</label>
-            <select
-              className='form-control'
-              name='combination'
-              value={this.state.combination}
-              onChange={this.handleBoolean}
-            >
-              <option value='true'>True</option>
-              <option value='false'>False</option>
-            </select>
           </div>
 
           <div className='form-group'>
@@ -238,20 +151,6 @@ class WashingMachine extends Component {
           </div>
 
           <div className='form-group'>
-            <label for='depth' className='form-inline'>Depth</label>
-            <input
-              type='number'
-              id='depth'
-              className='form-control'
-              placeholder='Depth in mm'
-              name='depth'
-              value={this.state.depth}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
             <label className='form-inline'>Detergent Type</label>
             <select
               className='form-control'
@@ -262,20 +161,6 @@ class WashingMachine extends Component {
               <option value='Non Drum'>Non Drum</option>
               <option value='Drum'>Drum</option>
             </select>
-          </div>
-
-          <div className='form-group'>
-            <label for='height' className='form-inline'>Height</label>
-            <input
-              type='number'
-              id='height'
-              className='form-control'
-              placeholder='Height in mm'
-              name='height'
-              value={this.state.height}
-              onChange={this.handleChange}
-              required
-            />
           </div>
 
           <div className='form-group'>
@@ -292,37 +177,9 @@ class WashingMachine extends Component {
           </div>
 
           <div className='form-group'>
-            <label for='powerConsMode' className='form-inline'>Power Consumption in Mode</label>
-            <input
-              type='number'
-              id='powerConsMode'
-              className='form-control'
-              placeholder='Enter value in watts'
-              name='powerConsMode'
-              value={this.state.powerConsMode}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label for='progName' className='form-inline'>Program Name</label>
-            <input
-              type='text'
-              id='progName'
-              className='form-control'
-              placeholder='Name of the Program - normal/cotton etc'
-              name='progName'
-              value={this.state.progName}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
             <label for='standbyPowerUsage' className='form-inline'>Standby Power Usage</label>
             <input
-              type='number'
+              type='text'
               id='standbyPowerUsage'
               className='form-control'
               placeholder='Enter value in watts'
@@ -344,20 +201,6 @@ class WashingMachine extends Component {
               <option value='Drum'>Drum</option>
               <option value='Non Drum'>Non Drum</option>
             </select>
-          </div>
-
-          <div className='form-group'>
-            <label for='width' className='form-inline'>Width</label>
-            <input
-              type='number'
-              id='width'
-              className='form-control'
-              placeholder='Width in mm'
-              name='width'
-              value={this.state.width}
-              onChange={this.handleChange}
-              required
-            />
           </div>
 
           <div className='form-group'>

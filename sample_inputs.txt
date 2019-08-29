@@ -1,17 +1,11 @@
 Dryer API - 
 {
     "specifications": [
-        "AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)",
-        8,
-        false,
+        true,
         "Timer",
-        800,
-        650,
-        200,
-        "dry",
-        200,
-        "Vented",
-        650
+    	250,
+        350,
+        "Vented"
     ]
 }
 
@@ -27,23 +21,14 @@ Monitor API -
 Washing Machine API - 
 {
 	"specifications" : [
-		"AS/NZS 2040.2:2005",
 		2,
 		300,
-		500,
-		400,
-		true,
 		"Cold",
 		false,
-		565,
 		"Drum",
-		1000,
 		"No",
-		0.4,
-		"normal",
-		0.45,
+		0.8,
 		"Drum",
-		600,
 		120
 	]
 }

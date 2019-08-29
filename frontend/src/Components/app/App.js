@@ -18,7 +18,7 @@ class App extends React.Component {
               className='navbar-brand text-success font-weight-bold mx-auto order-0'
               href='/'
             >
-            <img src="/static/react/EnergySave.ico" width="20" height="20" class="d-inline-block" alt="" />
+            <img src="/static/react/EnergySave.ico" width="30" height="30" class="d-inline-block" alt="" />
               {' '}EnergySave
             </a>
           </nav>

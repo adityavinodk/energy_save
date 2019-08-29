@@ -9,17 +9,11 @@ class Dryer extends Component {
     // specifications = ['AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)', 'ASKO', 8, True, 'Timer', 'Slovenia', 890, 650, 200, 'Heat and dry', 230, 'Vented', 650]
     // order_of_training_data = ['Appliance Standard', 'Brand', 'Capacity', 'Combination', 'Control', 'Country', 'Depth','Height', 'Current Comparitive Energy Consumption', 'Program Name', 'Program Time', 'Type', 'Width']
     this.state = {
-      applianceStandard: 'AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)',
-      capacity: '',
       combination: true,
       control: 'Timer',
-      depth: '',
-      height: '',
       comparitiveEnergyConsumption: '',
-      programName: '',
       programTime: '',
       type: 'Vented',
-      width: '',
       response: '',
       loading: false,
       serverError: false
@@ -46,17 +40,11 @@ class Dryer extends Component {
     e.preventDefault()
     this.setState({ loading: true })
     const data = [
-      this.state.applianceStandard,
-      parseInt(this.state.capacity),
       JSON.parse(this.state.combination),
       this.state.control,
-      parseInt(this.state.depth),
-      parseInt(this.state.height),
       parseInt(this.state.comparitiveEnergyConsumption),
-      this.state.programName,
       parseInt(this.state.programTime),
-      this.state.type,
-      parseInt(this.state.width)
+      this.state.type
     ]
 
     fetch('/api/predict/dryer', {
@@ -99,45 +87,6 @@ class Dryer extends Component {
         </div>
         <form className='container w-50' onSubmit={this.submitForm}>
           <div className='form-group'>
-            <label className='form-inline'>Appliance Standard</label>
-            <select
-              className='form-control'
-              name='applianceStandard'
-              value={this.state.applianceStandard}
-              onChange={this.handleChange}
-            >
-              <option value='AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)'>
-                AS/NZS 2442.2:2000/Amdt 2:2007 (Legacy)
-              </option>
-              <option value='AS/NZS 2442.2:2000/Amdt 2:2007'>
-                AS/NZS 2442.2:2000/Amdt 2:2007
-              </option>
-              <option value='Greenhouse and Energy Minimum Standards (Rotary Clothes Dryers) Determination 2015'>
-                Greenhouse and Energy Minimum Standards (Rotary Clothes Dryers)
-                Determination 2015
-              </option>
-              <option value='Greenhouse and Energy Minimum Standards (Rotary Clothes Dryers) Determination 2012'>
-                Greenhouse and Energy Minimum Standards (Rotary Clothes Dryers)
-                Determination 2012
-              </option>
-            </select>
-          </div>
-
-          <div className='form-group'>
-            <label for='capacity' className='form-inline'>Capacity</label>
-            <input
-              type='number'
-              id='capacity'
-              className='form-control'
-              placeholder='Enter value in kg'
-              name='capacity'
-              value={this.state.capacity}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
             <label for='combination' className='form-inline'>Combination - washer+dryer?</label>
             <select
               className='form-control'
@@ -165,49 +114,7 @@ class Dryer extends Component {
               <option value='Manual'>Manual</option>
             </select>
           </div>
-
-          <div className='form-group'>
-            <label for='depth' className='form-inline'>Depth</label>
-            <input
-              type='number'
-              id='depth'
-              className='form-control'
-              placeholder='Depth in mm'
-              name='depth'
-              value={this.state.depth}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label for='height' className='form-inline'>Height</label>
-            <input
-              type='number'
-              id='height'
-              className='form-control'
-              placeholder='Height in mm'
-              name='height'
-              value={this.state.height}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label for='width' className='form-inline'>Width</label>
-            <input
-              type='number'
-              id='width'
-              className='form-control'
-              placeholder='Width in mm'
-              name='width'
-              value={this.state.width}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
+          
           <div className='form-group'>
             <label for='comparitiveEnergyConsumption' className='form-inline'>
               Current Comparitive Energy Consumption
@@ -219,20 +126,6 @@ class Dryer extends Component {
               placeholder='Energy Consumption of the product expressed as kilowatt hours per years'
               name='comparitiveEnergyConsumption'
               value={this.state.comparitiveEnergyConsumption}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label for='programName' className='form-inline'>Program Name</label>
-            <input
-              type='text'
-              id='programName'
-              className='form-control'
-              placeholder='Program run like heat/dry'
-              name='programName'
-              value={this.state.programName}
               onChange={this.handleChange}
               required
             />
