@@ -14,30 +14,86 @@ class Response extends Component {
   }
 
   render () {
+    const links = this.props.response.links
+    const listItems = links.map(link => (
+      <li className='list-group-item'>
+        <a href={link}>{link}</a>
+      </li>
+    ))
+
+    const tableRows = Object.keys(this.props.response.correlatedParameters).map(
+      parameter => (
+        <tr>
+          <td>{parameter}</td>
+          <td>{this.props.response.correlatedParameters[parameter].join()}</td>
+        </tr>
+      )
+    )
     return (
-      <div className='jumbotron row'>
-        <div className='col-4' />
-        <div className='col-4'>
-          <div id='category' className='h4'>
-            Category {this.props.response.category}
+      <div className='row'>
+        <div className='col-3' />
+        <div className='card col-6 mx-0 px-0'>
+          <div id='header' className='card-header h1'>
+            <label className='h1 text-success'>EnergySave</label> Report
           </div>
-          <div id='category' className='h6'>
-            Range {this.props.response.starRange}
+          <div id='body' className='card-body'>
+            <div id='category' className='card-title h3'>
+              Category {this.props.response.category}
+            </div>
+            <div id='star_range' className='card-subtitle small font-bold'>
+              (Range {this.props.response.starRange})
+            </div>
+            <div id='info' className='lead mb-3'>
+              {this.props.response.info}
+            </div>
+            <div id='inference' className='font-italic mb-4 text-info'>
+              {this.props.response.inference}
+            </div>
+            <hr class='my-4' />
+
+            {Object.keys(this.props.response.correlatedParameters).length !==
+            0 ? (
+              <React.Fragment>
+                  <label className='lead'>
+                  Range of values for Category {this.props.response.category}
+                </label>
+                  <table class='table mb-1'>
+                  <thead class='thead-dark'>
+                      <tr>
+                      <th scope='col'>Parameter</th>
+                      <th scope='col'>Range</th>
+                    </tr>
+                    </thead>
+                  <tbody>{tableRows}</tbody>
+                </table>
+                  {this.props.response.category === 2 ? null : (
+                  <label className='small text-info font-italic mt-0 mb-4'>
+                    If these parameters are dealt with, you can achieve a
+                    reduction of{' '}
+                      {this.props.response.idealEnergy[1] -
+                      this.props.response.idealEnergy[0]}{' '}
+                    kW/Hr
+                    </label>
+                  )}
+                  <hr class='my-4' />
+                </React.Fragment>
+              ) : null}
+
+            <div id='links'>
+              <label className='h4'>Helpful Links</label>
+              <ul className='list-group'>{listItems}</ul>
+            </div>
           </div>
-          <div id='info' className='lead mb-3'>
-            {this.props.response.info}
+          <div id='footer' className='card-footer'>
+            <button
+              className='btn btn-success'
+              onClick={() => {
+                window.location.href = this.props.appliance
+              }}
+            >
+              Fill Details Again
+            </button>
           </div>
-          <div id='inference' className='font-italic mb-4'>
-            {this.props.response.inference}
-          </div>
-          <button
-            className='btn btn-success'
-            onClick={() => {
-              window.location.href = this.props.appliance
-            }}
-          >
-            Fill Details Again
-          </button>
         </div>
       </div>
     )
