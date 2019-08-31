@@ -33,8 +33,8 @@ class Response extends Component {
       <div className='row'>
         <div className='col-3' />
         <div className='card col-6 mx-0 px-0'>
-          <div id='header' className='card-header h1'>
-            <label className='h1 text-success'>EnergySave</label> Report
+          <div id='header' className='card-header h2'>
+            Energy<label className='h1 text-success'>Save</label> Report
           </div>
           <div id='body' className='card-body'>
             <div id='category' className='card-title h3'>
