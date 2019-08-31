@@ -1,7 +1,5 @@
-# The IBM Hack Challenge
-
-## Problem Statement 3
-The aim of the challenge is to build Machine Learning models to create energy consumption profiles for household and identify probable 
+# Problem Statement
+The aim of this project is to build Machine Learning models to create energy consumption profiles for household and identify probable 
 areas to plug wastage of energy in household. 
 
 The objective of this application is to help households in 2 main ways - 
@@ -40,6 +38,3 @@ We would like the developer community to contribute to this project -
 - Provide visualitzation of the inferences made on the website through charts and plots.
 
 Send Pull Requests and we shall review them!
-
-## Hackathon files
-All the files can be found in the `hack_files` directory.
