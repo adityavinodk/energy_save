@@ -1,3 +1,7 @@
+![EnergySave Logo](https://github.com/adityavinodk/energy_save/blob/master/frontend/public/EnergySave(with%20Text).png)
+
+--------------------------------------------------------------------------------
+
 # Problem Statement
 The aim of this project is to build Machine Learning models to create energy consumption profiles for household and identify probable 
 areas to plug wastage of energy in household. 
