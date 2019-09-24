@@ -6,8 +6,8 @@ import ServerError from '../../ServerError'
 class WashingMachine extends Component {
   constructor () {
     super()
-    // order_of_training_data = ['ApplStandard', 'Brand', 'Cap', 'CEC Cold', 'CEC_', 'Cold Water Cons', 'Combination', 'Conn_Mode', 'Country', 'delayStartMode', 'Depth', 'DetergentType', 'Height', 'internal_heater', 'powerConsMode', 'Prog Name', 'standbyPowerUsage', 'Type', 'Width', 'Program Time']    // specifications = ['AS/NZS 2040.2:2005', 'WHIRLPOOL', 7, 150, 400, 100, True, 'Dual', 'India', True, 565, 'Non Drum', 850, 'No', 0.4, 'normal', 0.45, 'Drum', 600, 120]
-    // specifications = ['AS/NZS 2040.2:2005', 'WHIRLPOOL', 7, 150, 400, 100, True, 'Dual', 'India', True, 565, 'Non Drum', 850, 'No', 0.4, 'normal', 0.45, 'Drum', 600, 120]
+    // order_of_training_data = ['Cap', 'CEC_', 'Conn_Mode', 'delayStartMode', 'internal_heater', 'standbyPowerUsage', 'Type', 'Program Time']
+    // specifications = [9, 450, "Dual", true, "Yes", 0.8, "Non-Drum", 150]
     this.state = {
       cap: '',
       cecWarm: '',
@@ -184,7 +184,7 @@ class WashingMachine extends Component {
               onChange={this.handleChange}
             >
               <option value='Drum'>Drum</option>
-              <option value='Non Drum'>Non Drum</option>
+              <option value='Non-Drum'>Non-Drum</option>
             </select>
           </div>
 

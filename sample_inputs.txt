@@ -21,14 +21,13 @@ Monitor API -
 Washing Machine API - 
 {
 	"specifications" : [
-		2,
-		300,
-		"Cold",
-		false,
-		"Drum",
-		"No",
+		9,
+		450,
+		"Dual",
+		true,
+		"Yes",
 		0.8,
-		"Drum",
-		120
+		"Non-Drum",
+		150
 	]
 }
