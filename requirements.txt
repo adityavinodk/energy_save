@@ -1,7 +1,7 @@
 pandas==0.24.2
 joblib==0.13.2
 selenium==3.141.0
-setuptools==41.0.1
+setuptools==65.5.1
 Flask==1.0.3
 numpy==1.16.4
 scikit_learn==0.21.3
